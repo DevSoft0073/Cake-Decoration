@@ -1,0 +1,6 @@
+framework module Pods_CakeDecoration_CakeDecorationUITests {
+  umbrella header "Pods-CakeDecoration-CakeDecorationUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
