@@ -9,7 +9,16 @@ import Foundation
 
 class DailyInventoryVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //------------------------------------------------------
+    
+    //MARK: IBOutlet(s)
+    
     @IBOutlet weak var tblList: UITableView!
+    
+    //------------------------------------------------------
+    
+    //MARK: Variable Declarations
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method

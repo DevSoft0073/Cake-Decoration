@@ -20,6 +20,9 @@
 		1F703DEF26BF149F00C461B2 /* HomeOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703DED26BF149F00C461B2 /* HomeOptionsCell.swift */; };
 		1F703DF026BF149F00C461B2 /* HomeOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F703DEE26BF149F00C461B2 /* HomeOptionsCell.xib */; };
 		1F703DF326BF153E00C461B2 /* HomeListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F703DF226BF153E00C461B2 /* HomeListingVC.swift */; };
+		1F8E8A7C26C1814200DC12B6 /* ListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E8A7B26C1814200DC12B6 /* ListingVC.swift */; };
+		1F8E8A7F26C19E6B00DC12B6 /* FlavourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E8A7D26C19E6B00DC12B6 /* FlavourCell.swift */; };
+		1F8E8A8026C19E6B00DC12B6 /* FlavourCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E8A7E26C19E6B00DC12B6 /* FlavourCell.xib */; };
 		1FD1AC2C26C0059900F0E053 /* DailyInventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AC2A26C0059900F0E053 /* DailyInventoryCell.swift */; };
 		1FD1AC2D26C0059900F0E053 /* DailyInventoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FD1AC2B26C0059900F0E053 /* DailyInventoryCell.xib */; };
 		1FD1AC2F26C016C100F0E053 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AC2E26C016C100F0E053 /* RequestManager.swift */; };
@@ -91,6 +94,9 @@
 		1F703DED26BF149F00C461B2 /* HomeOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOptionsCell.swift; sourceTree = "<group>"; };
 		1F703DEE26BF149F00C461B2 /* HomeOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeOptionsCell.xib; sourceTree = "<group>"; };
 		1F703DF226BF153E00C461B2 /* HomeListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListingVC.swift; sourceTree = "<group>"; };
+		1F8E8A7B26C1814200DC12B6 /* ListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingVC.swift; sourceTree = "<group>"; };
+		1F8E8A7D26C19E6B00DC12B6 /* FlavourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlavourCell.swift; sourceTree = "<group>"; };
+		1F8E8A7E26C19E6B00DC12B6 /* FlavourCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlavourCell.xib; sourceTree = "<group>"; };
 		1FD1AC2A26C0059900F0E053 /* DailyInventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInventoryCell.swift; sourceTree = "<group>"; };
 		1FD1AC2B26C0059900F0E053 /* DailyInventoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyInventoryCell.xib; sourceTree = "<group>"; };
 		1FD1AC2E26C016C100F0E053 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -224,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				1F703DF226BF153E00C461B2 /* HomeListingVC.swift */,
+				1F8E8A7B26C1814200DC12B6 /* ListingVC.swift */,
 			);
 			path = UserListing;
 			sourceTree = "<group>";
@@ -296,6 +303,8 @@
 			children = (
 				1FD1AC5726C059A200F0E053 /* GusestsListCell.swift */,
 				1FD1AC5826C059A200F0E053 /* GusestsListCell.xib */,
+				1F8E8A7D26C19E6B00DC12B6 /* FlavourCell.swift */,
+				1F8E8A7E26C19E6B00DC12B6 /* FlavourCell.xib */,
 			);
 			path = "Collection VIew";
 			sourceTree = "<group>";
@@ -597,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD1AC2D26C0059900F0E053 /* DailyInventoryCell.xib in Resources */,
+				1F8E8A8026C19E6B00DC12B6 /* FlavourCell.xib in Resources */,
 				1FECEFB426BF08C6009B43BB /* LaunchScreen.storyboard in Resources */,
 				1FD1AC5A26C059A200F0E053 /* GusestsListCell.xib in Resources */,
 				1F6BE02E26BFC0C200C556DC /* EmployeeManagmentOptions.xib in Resources */,
@@ -750,10 +760,12 @@
 				1FECEFDD26BF0937009B43BB /* HomeDetails.swift in Sources */,
 				1FECEFDE26BF0937009B43BB /* Manager.swift in Sources */,
 				1FECEFE926BF099E009B43BB /* AppExtensions.swift in Sources */,
+				1F8E8A7F26C19E6B00DC12B6 /* FlavourCell.swift in Sources */,
 				1FD1AC4D26C0292800F0E053 /* PreferenceManager.swift in Sources */,
 				1F703DF326BF153E00C461B2 /* HomeListingVC.swift in Sources */,
 				1F6BE03626BFCC2100C556DC /* OrderListingVC.swift in Sources */,
 				1FECEFEA26BF099E009B43BB /* AppFunctions.swift in Sources */,
+				1F8E8A7C26C1814200DC12B6 /* ListingVC.swift in Sources */,
 				1FD1AC2C26C0059900F0E053 /* DailyInventoryCell.swift in Sources */,
 				1FD1AC3C26C0195F00F0E053 /* JSONAny.swift in Sources */,
 				1FD1AC4726C0288B00F0E053 /* LoadingManager.swift in Sources */,

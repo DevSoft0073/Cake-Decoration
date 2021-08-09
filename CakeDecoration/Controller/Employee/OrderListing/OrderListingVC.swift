@@ -63,8 +63,8 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderListingCell.self)) as? OrderListingCell {
             cell.selectionStyle = .none
             cell.lblOrder.text = "Order ID : 236723234"
-            cell.lblName.text = "Name : Mandeep Sharma"
-            cell.lblDate.text = "Date : 08-Aug-2021"
+            cell.lblName.text = "Customer name : Mandeep Sharma"
+            cell.lblDate.text = "Expected date : 08-Aug-2021"
             cell.lblTotal.text = "Total Price : $456"
             cell.btnPay.addTarget(self, action: #selector(payButtonAction(sender:)), for: .touchUpInside)
             cell.btnReady.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
@@ -75,7 +75,7 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 280
+        return 325
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

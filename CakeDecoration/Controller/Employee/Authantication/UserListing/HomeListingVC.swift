@@ -19,7 +19,7 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: Variable Declarations
     
-    var details:[HomeMenu] = [HomeMenu(type: .user, name: "Customer", image: "userIcon"),HomeMenu(type: .employee, name: "Employee", image: "employeIcon")]
+    var details:[HomeMenu] = [HomeMenu(type: .user, name: "Cake Decorator", image: "cake"),HomeMenu(type: .employee, name: "Cake Order", image: "order")]
     
     //------------------------------------------------------
     
@@ -40,9 +40,7 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: Custome
     
     func configureUI(){
-        
-        
-        
+                
         let identifier = String(describing: HomeOptionsCell.self)
         let nibCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblList.register(nibCell, forCellReuseIdentifier: identifier)
@@ -80,10 +78,12 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = details[indexPath.row].type
         if type == .user {
-            let vc = SubmitVC.instantiate(fromAppStoryboard: .Customer)
+            let vc = LoginInVC.instantiate(fromAppStoryboard: .Main)
+            PreferenceManager.shared.curretMode = "1"
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             let vc = LoginInVC.instantiate(fromAppStoryboard: .Main)
+            PreferenceManager.shared.curretMode = "2"
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

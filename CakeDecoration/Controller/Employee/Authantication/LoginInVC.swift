@@ -17,6 +17,11 @@ class LoginInVC : UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     
+    //------------------------------------------------------
+    
+    //MARK: Variable Declarations
+    
+    var userType: String = String()
     
     //------------------------------------------------------
     
@@ -88,8 +93,14 @@ class LoginInVC : UIViewController {
     }
     
     @IBAction func btnLogin(_ sender: Any) {
-        let vc = EmployeeManagementVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if PreferenceManager.shared.curretMode == "1"{
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+      
     }
     //------------------------------------------------------
     
