@@ -1,15 +1,14 @@
 //
-//  UserModal.swift
-//  NewProject
+//  EmployeModal.swift
+//  CakeDecoration
 //
-//  Created by Dharmesh Avaiya on 22/08/20.
-//  Copyright © 2020 dharmesh. All rights reserved.
+//  Created by MyMac on 11/08/21.
 //
 
 import Foundation
 
-// MARK: - UserModal
-struct UserModal: Codable {
+// MARK: - EmployeeModal
+struct EmployeeModal: Codable {
     var id, name, email, password: String?
     var image, authenticateToken, role, loginStatus: String?
     var creationAt: String?
@@ -23,11 +22,11 @@ struct UserModal: Codable {
     }
 }
 
-// MARK: UserModal convenience initializers and mutators
+// MARK: EmployeeModal convenience initializers and mutators
 
-extension UserModal {
+extension EmployeeModal {
     init(data: Data) throws {
-        self = try newJSONDecoder().decode(UserModal.self, from: data)
+        self = try newJSONDecoder().decode(EmployeeModal.self, from: data)
     }
 
     init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -49,4 +48,3 @@ extension UserModal {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-

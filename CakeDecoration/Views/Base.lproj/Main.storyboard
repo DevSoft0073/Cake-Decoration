@@ -503,6 +503,13 @@
                                             <action selector="btnBack:" destination="NDe-Rq-XXG" eventType="touchUpInside" id="cey-WQ-G3O"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieG-8X-SO1">
+                                        <rect key="frame" x="938" y="96.5" width="40" height="40"/>
+                                        <state key="normal" image="add"/>
+                                        <connections>
+                                            <action selector="btnAddRow:" destination="NDe-Rq-XXG" eventType="touchUpInside" id="yYC-F0-Fd3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -512,10 +519,14 @@
                                     <constraint firstAttribute="trailing" secondItem="DAz-Wv-WEd" secondAttribute="trailing" id="CRK-dw-fcs"/>
                                     <constraint firstItem="DAz-Wv-WEd" firstAttribute="top" secondItem="Yoh-d8-W2w" secondAttribute="bottom" constant="15" id="Def-HE-Mcw"/>
                                     <constraint firstItem="QeZ-n6-X6W" firstAttribute="centerX" secondItem="IvN-tg-nBA" secondAttribute="centerX" id="Eep-qA-OKT"/>
+                                    <constraint firstAttribute="trailing" secondItem="ieG-8X-SO1" secondAttribute="trailing" constant="46" id="KIf-Tr-31v"/>
                                     <constraint firstItem="rTt-0e-m2t" firstAttribute="centerY" secondItem="Yoh-d8-W2w" secondAttribute="centerY" id="NGh-gf-Z4G"/>
                                     <constraint firstItem="DAz-Wv-WEd" firstAttribute="leading" secondItem="IvN-tg-nBA" secondAttribute="leading" id="Tg7-I7-byy"/>
+                                    <constraint firstItem="ieG-8X-SO1" firstAttribute="width" secondItem="rTt-0e-m2t" secondAttribute="width" id="UIP-XV-f2a"/>
                                     <constraint firstAttribute="bottom" secondItem="DAz-Wv-WEd" secondAttribute="bottom" id="V8d-yk-vbI"/>
                                     <constraint firstItem="QeZ-n6-X6W" firstAttribute="top" secondItem="IvN-tg-nBA" secondAttribute="top" id="eyV-Qs-OuZ"/>
+                                    <constraint firstItem="ieG-8X-SO1" firstAttribute="centerY" secondItem="rTt-0e-m2t" secondAttribute="centerY" id="pUC-gn-OBA"/>
+                                    <constraint firstItem="ieG-8X-SO1" firstAttribute="height" secondItem="rTt-0e-m2t" secondAttribute="height" id="vJy-Pm-ruD"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aj4-xB-svg">
@@ -1384,7 +1395,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tblHeight" destination="7f7-hV-Z6Q" id="jn9-Ds-rBA"/>
                         <outlet property="tblList" destination="C3v-ja-kt5" id="1k3-Ua-kVq"/>
+                        <outlet property="txtMissedValue" destination="Rg3-Rc-AN9" id="Mhd-Ps-ZBa"/>
+                        <outlet property="txtRetailValue" destination="r8X-XG-nOx" id="npG-CE-kaj"/>
+                        <outlet property="txtSelectDate" destination="IID-Y7-PWN" id="46c-ZT-c6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0BN-hu-ka6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1602,6 +1617,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="256" height="256"/>
         <image name="back" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

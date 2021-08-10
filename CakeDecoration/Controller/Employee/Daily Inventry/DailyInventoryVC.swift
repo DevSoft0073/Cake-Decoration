@@ -9,8 +9,12 @@ import Foundation
 
 class DailyInventoryVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tblHeight: NSLayoutConstraint!
+    @IBOutlet weak var txtSelectDate: UITextField!
+    @IBOutlet weak var txtMissedValue: UITextField!
+    @IBOutlet weak var txtRetailValue: UITextField!
     //------------------------------------------------------
-    
+    var updatedData = [String]()
     //MARK: IBOutlet(s)
     
     @IBOutlet weak var tblList: UITableView!
@@ -47,28 +51,90 @@ class DailyInventoryVC : UIViewController, UITableViewDelegate, UITableViewDataS
         tblList.separatorStyle = .none
     }
     
+    @objc func doneButtonPressed() {
+        if let  datePicker = self.txtSelectDate.inputView as? UIDatePicker {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            self.txtSelectDate.text = dateFormatter.string(from: datePicker.date)
+        }
+        self.txtSelectDate.resignFirstResponder()
+    }
+    
+    func performAddDailyInventory(completion:((_ flag: Bool) -> Void)?) {
+        
+        let newArray: [String : Any] = [
+            Request.Parameter.item_name : "",
+            Request.Parameter.display_case : "",
+            Request.Parameter.walk_in : "",
+            Request.Parameter.other_storage : "",
+            Request.Parameter.total_H : "",
+            Request.Parameter.price : "",
+            Request.Parameter.purchased : "",
+            Request.Parameter.sold : "",
+            Request.Parameter.actual_total : "",
+            Request.Parameter.variance : "",
+        ]
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.employeeId: "2",
+            Request.Parameter.avgVal : "33",
+            Request.Parameter.inventoryDate : "2021-08-09",
+            Request.Parameter.item_detail : newArray,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.addDailyInventory, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                }
+            } else {
+                
+                delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
     
     //------------------------------------------------------
     
     //MARK: Actions
     
-    
     @IBAction func btnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnAddRow(_ sender: UIButton) {
+        self.performAddDailyInventory { (flag : Bool) in
+            
+        }
     }
     
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+       return 9
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DailyInventoryCell.self)) as? DailyInventoryCell {
             cell.selectionStyle = .none
+//            DispatchQueue.main.async {
+//                self.tblHeight.constant = self.tblList.contentSize.height
+//            }
             return cell
         }
         return UITableViewCell()
@@ -90,6 +156,8 @@ class DailyInventoryVC : UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        txtSelectDate.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed))
+
     }
     
     //------------------------------------------------------

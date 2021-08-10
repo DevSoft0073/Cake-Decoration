@@ -1793,6 +1793,8 @@
                     <connections>
                         <outlet property="collectionFlavour" destination="Wna-xe-GGM" id="nSQ-Es-O2K"/>
                         <outlet property="collectionGuests" destination="Psi-y1-rTd" id="diI-BE-s8y"/>
+                        <outlet property="txtEmpName" destination="tup-i2-UZw" id="4wj-2G-pOA"/>
+                        <outlet property="txtSelectedDate" destination="LRe-Yk-ipW" id="1Uu-Yy-2Mc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

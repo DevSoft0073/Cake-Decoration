@@ -42,16 +42,38 @@ class LoginInVC : UIViewController {
         
     }
     
-    
-    
     //------------------------------------------------------
     
     //MARK: Custome
     
-    func performGetStudioDetails(completion:((_ flag: Bool) -> Void)?) {
+    
+    func validate() -> Bool {
+        
+        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterValidEmail) {
+            }
+            return false
+        }
+        
+        if ValidationManager.shared.isEmpty(text: txtPassword.text) == true {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.enterPassword) {
+            }
+            return false
+        }
+        
+        return true
+    }
+    
+    func performSignIn(completion:((_ flag: Bool) -> Void)?) {
         
         let parameter: [String: Any] = [
-            Request.Parameter.email: txtEmail.text ?? String(),
+            Request.Parameter.name: txtEmail.text ?? String(),
             Request.Parameter.password : txtPassword.text ?? String(),
         ]
         
@@ -61,16 +83,13 @@ class LoginInVC : UIViewController {
             
             if response.code == Status.Code.success {
                 
-                
-                if let stringUser = try? response.data?.jsonString() {
-                    print(stringUser)
-                }
-                
+                let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
                 
             } else {
                 
                 delay {
-                    
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
             
@@ -94,13 +113,38 @@ class LoginInVC : UIViewController {
     
     @IBAction func btnLogin(_ sender: Any) {
         if PreferenceManager.shared.curretMode == "1"{
-            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            if validate() == false {
+                return
+            }
+            
+            self.view.endEditing(true)
+            
+            LoadingManager.shared.showLoading()
+            
+            delay {
+                self.performSignIn { (flag : Bool) in
+//                    let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+//                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }else{
-            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            if validate() == false {
+                return
+            }
+            
+            self.view.endEditing(true)
+            
+            LoadingManager.shared.showLoading()
+            
+            delay {
+                self.performSignIn { (flag : Bool) in
+//                    let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+//                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }
-      
     }
     //------------------------------------------------------
     
@@ -108,6 +152,8 @@ class LoginInVC : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtEmail.text = "happyguleria123@gmail.com"
+        txtPassword.text = "Qwerty@123"
     }
     
     //------------------------------------------------------
