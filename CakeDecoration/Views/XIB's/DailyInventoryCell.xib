@@ -11,24 +11,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyInventoryCell" rowHeight="81" id="KGk-i7-Jjw" customClass="DailyInventoryCell" customModule="CakeDecoration" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="1071" height="81"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyInventoryCell" rowHeight="110" id="KGk-i7-Jjw" customClass="DailyInventoryCell" customModule="CakeDecoration" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1071" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="1071" height="81"/>
+                <rect key="frame" x="0.0" y="0.0" width="1071" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUz-v5-6XH">
-                        <rect key="frame" x="0.0" y="10" width="1071" height="61"/>
+                        <rect key="frame" x="0.0" y="10" width="1071" height="90"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qqA-6D-fu0">
-                                <rect key="frame" x="0.0" y="10" width="1071" height="41"/>
+                                <rect key="frame" x="0.0" y="10" width="1071" height="70"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8F-th-da9">
-                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-eB-HME">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-eB-HME">
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -54,10 +54,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-4m-8xV">
-                                        <rect key="frame" x="98.5" y="0.0" width="88" height="41"/>
+                                        <rect key="frame" x="98.5" y="0.0" width="88" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFr-mb-P96">
-                                                <rect key="frame" x="2" y="2" width="84" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -82,10 +82,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-G9-rIF">
-                                        <rect key="frame" x="196.5" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="196.5" y="0.0" width="88.5" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="20" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ke-p4-cca">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -110,10 +110,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3l-ZM-1VE">
-                                        <rect key="frame" x="295" y="0.0" width="88" height="41"/>
+                                        <rect key="frame" x="295" y="0.0" width="88" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="30" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="awT-ou-KWl">
-                                                <rect key="frame" x="2" y="2" width="84" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -138,10 +138,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-Iq-uvS">
-                                        <rect key="frame" x="393" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="393" y="0.0" width="88.5" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="40" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1t-VD-PCl">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -161,15 +161,15 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemRedColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-Wv-1ls">
-                                        <rect key="frame" x="491.5" y="0.0" width="88" height="41"/>
+                                        <rect key="frame" x="491.5" y="0.0" width="88" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="50" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J9Z-D2-tpj">
-                                                <rect key="frame" x="2" y="2" width="84" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -189,15 +189,15 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemRedColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-78-rm6">
-                                        <rect key="frame" x="589.5" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="589.5" y="0.0" width="88.5" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="60" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yI9-KE-Dtj">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -222,10 +222,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jg-VZ-kai">
-                                        <rect key="frame" x="688" y="0.0" width="88" height="41"/>
+                                        <rect key="frame" x="688" y="0.0" width="88" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="70" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-iQ-EZf">
-                                                <rect key="frame" x="2" y="2" width="84" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -245,15 +245,15 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemRedColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujW-Z9-2UO">
-                                        <rect key="frame" x="786" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="786" y="0.0" width="88.5" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="80" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQK-6e-Kvm">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -278,10 +278,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6c-77-FQm">
-                                        <rect key="frame" x="884.5" y="0.0" width="88" height="41"/>
+                                        <rect key="frame" x="884.5" y="0.0" width="88" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="90" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-Eh-GYi">
-                                                <rect key="frame" x="2" y="2" width="84" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -306,10 +306,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpJ-br-db2">
-                                        <rect key="frame" x="982.5" y="0.0" width="88.5" height="41"/>
+                                        <rect key="frame" x="982.5" y="0.0" width="88.5" height="70"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="100" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KgX-C8-gb8">
-                                                <rect key="frame" x="2" y="2" width="84.5" height="37"/>
+                                                <rect key="frame" x="2" y="2" width="84.5" height="66"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
@@ -329,7 +329,7 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" systemColor="systemRedColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -377,12 +377,15 @@
                 <outlet property="varianceFld" destination="KgX-C8-gb8" id="xim-4F-nV2"/>
                 <outlet property="walkinFld" destination="1ke-p4-cca" id="7Cn-0D-Vrr"/>
             </connections>
-            <point key="canvasLocation" x="515.21739130434787" y="78.013392857142847"/>
+            <point key="canvasLocation" x="515.21739130434787" y="87.053571428571431"/>
         </tableViewCell>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

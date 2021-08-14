@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 public protocol ImagePickerDelegate: class {
     func didSelect(image: UIImage?)
@@ -82,14 +83,22 @@ extension ImagePicker: UIImagePickerControllerDelegate {
         self.pickerController(picker, didSelect: nil)
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController,
-                                      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+//        if let asset = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerPHAsset") ] as? PHAsset{
+//            if let fileName = asset.value(forKey: "filename") as? String{
+//                print(fileName)
+//            }
+//        }
+//        
         guard let image = info[.editedImage] as? UIImage else {
             return self.pickerController(picker, didSelect: nil)
         }
+        
         print("cameraImage",image)
         self.pickerController(picker, didSelect: image)
     }
+    
 }
 
 extension ImagePicker: UINavigationControllerDelegate {

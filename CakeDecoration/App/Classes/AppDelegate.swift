@@ -5,42 +5,27 @@
 //  Created by MyMac on 08/08/21.
 //
 
-
-
-import UIKit
-import IQKeyboardManagerSwift
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate{
-    
+func appDelegate() -> AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
+}
+
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
     var window: UIWindow?
-    var userid = String()
-    
+
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    //------------------------------------------------------
-    
-    //MARK: Customs
-    
-    /// keyboard configutation
-    private func configureKeboard() {
-        
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIScrollView.self, UIStackView.self, UIView.self, UISearchBar.self]
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        switchToLanding()
+        return true
     }
     
-  
-//    func chekLoggedUser() {
-//        if PreferenceManager.shared.loggedUser == true {
-//            NavigationManager.shared.setupLanding()
-//        } else {
-//            NavigationManager.shared.setupSingIn()
-//        }
-//    }
     
     func switchToLanding(){
         let vc = LandingVC.instantiate(fromAppStoryboard: .Landing)
@@ -49,15 +34,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
-    
-    //------------------------------------------------------
-    
-    //MARK: UIApplicationDelegate
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        configureKeboard()
-        
-        return true
+
+
+    // MARK: UISceneSession Lifecycle
+
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+
 }
+

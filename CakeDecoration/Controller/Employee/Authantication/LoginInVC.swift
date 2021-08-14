@@ -75,6 +75,7 @@ class LoginInVC : BaseVC {
         let parameter: [String: Any] = [
             Request.Parameter.name: txtEmail.text ?? String(),
             Request.Parameter.password : txtPassword.text ?? String(),
+            Request.Parameter.role: PreferenceManager.shared.curretMode ?? String()
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
@@ -154,8 +155,8 @@ class LoginInVC : BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        txtEmail.text = "happyguleria123@gmail.com"
-//        txtPassword.text = "Qwerty@123"
+        txtEmail.text = "komal@gmail.com"
+        txtPassword.text = "12345678"
     }
     
     //------------------------------------------------------

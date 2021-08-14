@@ -111,7 +111,7 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         if PreferenceManager.shared.curretMode == "1"{
             let type = details[indexPath.row].type
             if type == .user {
-                let vc = DailyInventoryVC.instantiate(fromAppStoryboard: .Main)
+                let vc = InventoryListingVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let vc = OrderListingVC.instantiate(fromAppStoryboard: .Main)
@@ -123,7 +123,7 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let vc = SubmitVC.instantiate(fromAppStoryboard: .Customer)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                let vc = OrderListingVC.instantiate(fromAppStoryboard: .Main)
+                let vc = CustomerOrderListing.instantiate(fromAppStoryboard: .Customer)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

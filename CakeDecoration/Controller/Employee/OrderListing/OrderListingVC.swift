@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //------------------------------------------------------
     
@@ -20,6 +20,10 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
     //MARK: Variable Declarations
     
     var items: [OrderListingModal] = []
+    var toolBar = UIToolbar()
+    var picker  = UIPickerView()
+    var selectedArray = ["All","Week","Month"]
+    var selectedValue = String()
     
     //------------------------------------------------------
     
@@ -51,13 +55,46 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func performGetListing(completion:((_ flag: Bool) -> Void)?) {
-        
-        let parameter: [String: Any] = [
-            Request.Parameter.employeeId: "2",
-            Request.Parameter.status : "2",
-            Request.Parameter.month: "",
-            Request.Parameter.week : "36",
-        ]
+        var monthName = String()
+        var parameter: [String: Any] = [:]
+        if selectedValue == "All" {
+            parameter = [
+                Request.Parameter.employeeId: "2",
+                Request.Parameter.status : "1",
+                Request.Parameter.month: "",
+                Request.Parameter.week : "",
+            ]
+        } else if selectedValue == "Week" {
+            parameter = [
+                Request.Parameter.employeeId: "2",
+                Request.Parameter.status : "2",
+                Request.Parameter.month: "",
+                Request.Parameter.week : "52",
+            ]
+            
+        } else if selectedValue == "Month" {
+            
+            let now = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM"
+            let nameOfMonth = dateFormatter.string(from: now)
+            print(nameOfMonth)
+            monthName = nameOfMonth
+            
+            parameter = [
+                Request.Parameter.employeeId: "2",
+                Request.Parameter.status : "3",
+                Request.Parameter.month: monthName,
+                Request.Parameter.week : "",
+            ]
+        } else {
+            parameter = [
+                Request.Parameter.employeeId: "2",
+                Request.Parameter.status : "1",
+                Request.Parameter.month: "",
+                Request.Parameter.week : "",
+            ]
+        }
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.orderListing, parameter: parameter, showLoader: false, decodingType: ResponseModal<[OrderListingModal]>.self, successBlock: { (response: ResponseModal<[OrderListingModal]>) in
             
@@ -85,10 +122,12 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
         })
     }
     
-    func performStatus(completion:((_ flag: Bool) -> Void)?) {
+    func performStatus(orderID : String , orderStatus : String ,completion:((_ flag: Bool) -> Void)?) {
         
-        let parameter: [String: Any] = [
-            Request.Parameter.employeeId: "2",
+        var parameter: [String: Any] = [:]
+        
+        parameter = [
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
             Request.Parameter.orderStatu : "2",
             Request.Parameter.order_id: "order610fc22e0dce1",
         ]
@@ -128,6 +167,55 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func btnListing(_ sender: Any) {
+        picker = UIPickerView.init()
+        picker.delegate = self
+        picker.dataSource = self
+        picker.backgroundColor = UIColor.white
+        picker.setValue(UIColor.black, forKey: "textColor")
+        picker.autoresizingMask = .flexibleWidth
+        picker.contentMode = .center
+        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(picker)
+        
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .blackTranslucent
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Picker view Delegate Datasource Method(s)
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return selectedArray.count
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return selectedArray[row]
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedValue = selectedArray[row]
+        
+        LoadingManager.shared.showLoading()
+        
+        performGetListing { (flag : Bool) in
+            
+        }
+        print(selectedArray[row])
+    }
+    
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
@@ -146,6 +234,7 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.lblTotal.text = "Total Price : \(data.totalCost ?? String())"
             cell.btnPay.addTarget(self, action: #selector(payButtonAction(sender:)), for: .touchUpInside)
             cell.btnReady.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
+            cell.btnReady.tag = indexPath.row
             return cell
         }
         return UITableViewCell()
@@ -172,15 +261,19 @@ class OrderListingVC : UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func readyButtonAction(sender : UIButton) {
-        
+        let data = items[sender.tag]
         DisplayAlertManager.shared.displayAlertWithCancelOk(target: self, animated: true, message: "Are you sure this order is ready?") {
             
         } handlerOk: {
-            self.performStatus { (flag : Bool) in
+            
+            DispatchQueue.main.async {
                 
+                LoadingManager.shared.showLoading()
+                
+                self.performStatus(orderID: data.orderID ?? String(), orderStatus: data.orderReadyStatus ?? String()) { (flag : Bool) in
+                }
             }
         }
-    
     }
     
     //------------------------------------------------------

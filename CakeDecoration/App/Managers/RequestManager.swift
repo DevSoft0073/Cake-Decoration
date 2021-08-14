@@ -40,6 +40,7 @@ struct Request {
         static let item_detail = "item_detail"
         static let orderStatu = "order_ready_status"
         static let order_id = "order_id"
+        static let role = "role"
         
         //Add order
         static let ordered_date = "ordered_date"
@@ -83,6 +84,8 @@ struct Request {
         static let readyStatus = "OrderReadyStatus.php"
         static let addOrder = "OrderRequest.php"
         static let getAllItems = "GetAllItemsForInventory.php"
+        static let deliverStatus = "OrderDeliverStatus.php"
+        static let inventoryListing = "DailyInventoryListing.php"
     }    
 }
 

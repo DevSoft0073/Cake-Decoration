@@ -65,8 +65,12 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         self.txtSelectDate.resignFirstResponder()
     }
     
-    func performAddDailyInventory(completion:((_ flag: Bool) -> Void)?) {
+    func validateData()  {
         
+    }
+    
+    func performAddDailyInventory(completion:((_ flag: Bool) -> Void)?) {
+        var isEmptyFieldExist = false
         var finalArray = [[String : Any]]()
         for index in 0..<self.itemCounts{
             let index = IndexPath(row: index, section: 0)
@@ -86,16 +90,24 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                 ]
                 
                 finalArray.append(newArray)
+                
+                if cell.displayFld.text!.isEmpty || cell.walkinFld.text!.isEmpty || cell.otherStorageFld.text!.isEmpty || cell.producedFld.text!.isEmpty || cell.soldFld.text!.isEmpty || cell.actualTotalFld.text!.isEmpty {
+                    isEmptyFieldExist = true
+                }
             }
+        }
+        
+        if isEmptyFieldExist {
+            DisplayAlertManager.shared.displayAlert(message: "Please add values for all fields.")
+            return
         }
         
         print("here is final array",finalArray)
         
-        
         let parameter: [String: Any] = [
-            Request.Parameter.employeeId: "2",
-            Request.Parameter.avgVal : "33",
-            Request.Parameter.inventoryDate : "2021-08-09",
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.avgVal : txtRetailValue.text ?? String(),
+            Request.Parameter.inventoryDate : txtSelectDate.text ?? String(),
             Request.Parameter.item_detail : finalArray,
         ]
         
@@ -215,15 +227,26 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             UIView.transition(with: self.tblList, duration: 0.3, options: .transitionCrossDissolve, animations: {self.tblList.reloadData()}, completion: nil)
 
         }
-//
     }
     
     @IBAction func doneBtn(_ sender: UIButton) {
         
-        LoadingManager.shared.showLoading()
-        
-        self.performAddDailyInventory { (flag : Bool) in
+        if txtMissedValue.text?.isEmpty == true {
+            
+            DisplayAlertManager.shared.displayAlert(message: "Please add missed value.")
+            
+        } else if txtSelectDate.text?.isEmpty == true {
+            
+            DisplayAlertManager.shared.displayAlert(message: "Please select date.")
+            
+        } else {
+            
+            LoadingManager.shared.showLoading()
+            
+            self.performAddDailyInventory { (flag : Bool) in
+            }
         }
+        
     }
     //------------------------------------------------------
     

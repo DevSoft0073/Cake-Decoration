@@ -49,12 +49,21 @@
 		1FD3D3DA26C5A76700ABBB1A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3D3D926C5A76700ABBB1A /* ImagePicker.swift */; };
 		1FD3D3DD26C5AFAA00ABBB1A /* AddOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3D3DC26C5AFAA00ABBB1A /* AddOrder.swift */; };
 		1FD3D3E026C5B85900ABBB1A /* GetAllListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3D3DF26C5B85900ABBB1A /* GetAllListing.swift */; };
+		1FDC094426C79F020085B5E5 /* CustomerOrderListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC094326C79F020085B5E5 /* CustomerOrderListing.swift */; };
+		1FDC094726C79FCF0085B5E5 /* CustomerListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC094526C79FCF0085B5E5 /* CustomerListingCell.swift */; };
+		1FDC094826C79FCF0085B5E5 /* CustomerListingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC094626C79FCF0085B5E5 /* CustomerListingCell.xib */; };
+		1FDC094A26C7AFC60085B5E5 /* InventoryListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC094926C7AFC60085B5E5 /* InventoryListingVC.swift */; };
+		1FDC094D26C7B0DB0085B5E5 /* InventoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC094B26C7B0DB0085B5E5 /* InventoryCell.swift */; };
+		1FDC094E26C7B0DB0085B5E5 /* InventoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC094C26C7B0DB0085B5E5 /* InventoryCell.xib */; };
+		1FDC095226C7DA540085B5E5 /* InventoryModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC095126C7DA540085B5E5 /* InventoryModal.swift */; };
+		1FDC095526C7E6EC0085B5E5 /* loader_ring.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FDC095426C7E6EC0085B5E5 /* loader_ring.json */; };
 		1FEC0AD126C2D84B007A0713 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FEC0AD026C2D84B007A0713 /* Localizable.strings */; };
 		1FEC0AD526C2D90A007A0713 /* LocalizableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC0AD426C2D909007A0713 /* LocalizableConstants.swift */; };
 		1FEC0AD826C2E2BE007A0713 /* OrderListingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC0AD726C2E2BE007A0713 /* OrderListingModal.swift */; };
 		1FEC0ADB26C30C77007A0713 /* EmployeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC0ADA26C30C77007A0713 /* EmployeModal.swift */; };
 		1FEC0ADE26C310FB007A0713 /* ReadyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEC0ADD26C310FB007A0713 /* ReadyStatus.swift */; };
 		1FECEFA826BF08C4009B43BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECEFA726BF08C4009B43BB /* AppDelegate.swift */; };
+		1FECEFAA26BF08C4009B43BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECEFA926BF08C4009B43BB /* SceneDelegate.swift */; };
 		1FECEFAC26BF08C4009B43BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FECEFAB26BF08C4009B43BB /* ViewController.swift */; };
 		1FECEFAF26BF08C4009B43BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FECEFAD26BF08C4009B43BB /* Main.storyboard */; };
 		1FECEFB126BF08C6009B43BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FECEFB026BF08C6009B43BB /* Assets.xcassets */; };
@@ -132,6 +141,14 @@
 		1FD3D3D926C5A76700ABBB1A /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1FD3D3DC26C5AFAA00ABBB1A /* AddOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrder.swift; sourceTree = "<group>"; };
 		1FD3D3DF26C5B85900ABBB1A /* GetAllListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllListing.swift; sourceTree = "<group>"; };
+		1FDC094326C79F020085B5E5 /* CustomerOrderListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOrderListing.swift; sourceTree = "<group>"; };
+		1FDC094526C79FCF0085B5E5 /* CustomerListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerListingCell.swift; sourceTree = "<group>"; };
+		1FDC094626C79FCF0085B5E5 /* CustomerListingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerListingCell.xib; sourceTree = "<group>"; };
+		1FDC094926C7AFC60085B5E5 /* InventoryListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryListingVC.swift; sourceTree = "<group>"; };
+		1FDC094B26C7B0DB0085B5E5 /* InventoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCell.swift; sourceTree = "<group>"; };
+		1FDC094C26C7B0DB0085B5E5 /* InventoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryCell.xib; sourceTree = "<group>"; };
+		1FDC095126C7DA540085B5E5 /* InventoryModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryModal.swift; sourceTree = "<group>"; };
+		1FDC095426C7E6EC0085B5E5 /* loader_ring.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader_ring.json; sourceTree = "<group>"; };
 		1FEC0AD026C2D84B007A0713 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1FEC0AD426C2D909007A0713 /* LocalizableConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableConstants.swift; sourceTree = "<group>"; };
 		1FEC0AD726C2E2BE007A0713 /* OrderListingModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListingModal.swift; sourceTree = "<group>"; };
@@ -139,6 +156,7 @@
 		1FEC0ADD26C310FB007A0713 /* ReadyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyStatus.swift; sourceTree = "<group>"; };
 		1FECEFA426BF08C4009B43BB /* CakeDecoration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CakeDecoration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FECEFA726BF08C4009B43BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1FECEFA926BF08C4009B43BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1FECEFAB26BF08C4009B43BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1FECEFAE26BF08C4009B43BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FECEFB026BF08C6009B43BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -207,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6BE03226BFCA3500C556DC /* DailyInventoryVC.swift */,
+				1FDC094926C7AFC60085B5E5 /* InventoryListingVC.swift */,
 			);
 			path = "Daily Inventry";
 			sourceTree = "<group>";
@@ -218,6 +237,8 @@
 				1F6BE03726BFD0A400C556DC /* OrderListingCell.swift */,
 				1F703DED26BF149F00C461B2 /* HomeOptionsCell.swift */,
 				1FD1AC2A26C0059900F0E053 /* DailyInventoryCell.swift */,
+				1FDC094526C79FCF0085B5E5 /* CustomerListingCell.swift */,
+				1FDC094B26C7B0DB0085B5E5 /* InventoryCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -226,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6C3A0126C6F891007B4006 /* loader.json */,
+				1FDC095426C7E6EC0085B5E5 /* loader_ring.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -248,6 +270,8 @@
 				1F6BE02C26BFC0C200C556DC /* EmployeeManagmentOptions.xib */,
 				1F6BE03826BFD0A400C556DC /* OrderListingCell.xib */,
 				1FD1AC2B26C0059900F0E053 /* DailyInventoryCell.xib */,
+				1FDC094626C79FCF0085B5E5 /* CustomerListingCell.xib */,
+				1FDC094C26C7B0DB0085B5E5 /* InventoryCell.xib */,
 			);
 			path = "XIB's";
 			sourceTree = "<group>";
@@ -272,6 +296,7 @@
 		1FD1AC3026C018F800F0E053 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				1FDC095326C7E6730085B5E5 /* Inventory Listing */,
 				1FD3D3DE26C5B83F00ABBB1A /* Get All Items */,
 				1FD3D3DB26C5AF9100ABBB1A /* Add Order */,
 				1FEC0ADC26C310EC007A0713 /* Ready Status */,
@@ -325,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD1AC5426C0333100F0E053 /* SubmitVC.swift */,
+				1FDC094326C79F020085B5E5 /* CustomerOrderListing.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -354,6 +380,14 @@
 				1FD3D3DF26C5B85900ABBB1A /* GetAllListing.swift */,
 			);
 			path = "Get All Items";
+			sourceTree = "<group>";
+		};
+		1FDC095326C7E6730085B5E5 /* Inventory Listing */ = {
+			isa = PBXGroup;
+			children = (
+				1FDC095126C7DA540085B5E5 /* InventoryModal.swift */,
+			);
+			path = "Inventory Listing";
 			sourceTree = "<group>";
 		};
 		1FEC0AD626C2E2A0007A0713 /* OrderListing */ = {
@@ -488,6 +522,7 @@
 				1F703DEA26BF13F000C461B2 /* AppConstants.swift */,
 				1FECEFE726BF099E009B43BB /* AppFunctions.swift */,
 				1FEC0AD426C2D909007A0713 /* LocalizableConstants.swift */,
+				1FECEFA926BF08C4009B43BB /* SceneDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -680,10 +715,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FDC095526C7E6EC0085B5E5 /* loader_ring.json in Resources */,
 				1FD1AC2D26C0059900F0E053 /* DailyInventoryCell.xib in Resources */,
 				1F8E8A8026C19E6B00DC12B6 /* FlavourCell.xib in Resources */,
 				1FECEFB426BF08C6009B43BB /* LaunchScreen.storyboard in Resources */,
+				1FDC094E26C7B0DB0085B5E5 /* InventoryCell.xib in Resources */,
 				1FEC0AD126C2D84B007A0713 /* Localizable.strings in Resources */,
+				1FDC094826C79FCF0085B5E5 /* CustomerListingCell.xib in Resources */,
 				1FD1AC5A26C059A200F0E053 /* GusestsListCell.xib in Resources */,
 				1F6BE02E26BFC0C200C556DC /* EmployeeManagmentOptions.xib in Resources */,
 				1FD1AC5126C030FF00F0E053 /* Customer.storyboard in Resources */,
@@ -830,7 +868,10 @@
 				1F703DEF26BF149F00C461B2 /* HomeOptionsCell.swift in Sources */,
 				1FECEFAC26BF08C4009B43BB /* ViewController.swift in Sources */,
 				1FECEFA826BF08C4009B43BB /* AppDelegate.swift in Sources */,
+				1FECEFAA26BF08C4009B43BB /* SceneDelegate.swift in Sources */,
 				1FD1AC4926C028B400F0E053 /* NavigationManager.swift in Sources */,
+				1FDC095226C7DA540085B5E5 /* InventoryModal.swift in Sources */,
+				1FDC094426C79F020085B5E5 /* CustomerOrderListing.swift in Sources */,
 				1FEC0AD526C2D90A007A0713 /* LocalizableConstants.swift in Sources */,
 				1FD1AC3826C0194800F0E053 /* UserModal.swift in Sources */,
 				1FECEFF526BF0BF1009B43BB /* LandingVC.swift in Sources */,
@@ -840,6 +881,7 @@
 				1F8E8A7F26C19E6B00DC12B6 /* FlavourCell.swift in Sources */,
 				1FD3D3DA26C5A76700ABBB1A /* ImagePicker.swift in Sources */,
 				1FD1AC4D26C0292800F0E053 /* PreferenceManager.swift in Sources */,
+				1FDC094726C79FCF0085B5E5 /* CustomerListingCell.swift in Sources */,
 				1F703DF326BF153E00C461B2 /* HomeListingVC.swift in Sources */,
 				1F6BE03626BFCC2100C556DC /* OrderListingVC.swift in Sources */,
 				1FEC0ADE26C310FB007A0713 /* ReadyStatus.swift in Sources */,
@@ -863,7 +905,9 @@
 				1FD1AC4526C01C2B00F0E053 /* LoadingIndicatorVC.swift in Sources */,
 				1FEC0ADB26C30C77007A0713 /* EmployeModal.swift in Sources */,
 				1FD1AC3726C0194800F0E053 /* ResponseModal.swift in Sources */,
+				1FDC094D26C7B0DB0085B5E5 /* InventoryCell.swift in Sources */,
 				1FD1AC2F26C016C100F0E053 /* RequestManager.swift in Sources */,
+				1FDC094A26C7AFC60085B5E5 /* InventoryListingVC.swift in Sources */,
 				1FD3D3E026C5B85900ABBB1A /* GetAllListing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

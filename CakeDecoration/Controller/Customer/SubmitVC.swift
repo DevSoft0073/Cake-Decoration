@@ -13,7 +13,10 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
     
     //MARK: IBOutlet(s)
     
-    
+    @IBOutlet weak var flvrViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collHeight: NSLayoutConstraint!
+    @IBOutlet weak var guestHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblUploadedImage: UILabel!
     @IBOutlet weak var txtSelectFlvOur: UITextField!
     @IBOutlet weak var txtSelectCrust: UITextField!
     @IBOutlet weak var txtSelextRoll: UITextField!
@@ -385,7 +388,8 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             LoadingManager.shared.showLoading()
             
             performAddOrder { (flag : Bool) in
-                
+                self.lblUploadedImage.text = "Upload Photo"
+                self.lblUploadedImage.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             }
         }
     }
@@ -468,6 +472,8 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
     func didSelect(image: UIImage?) {
         if let imageData = image?.jpegData(compressionQuality: 0), let _ = UIImage(data: imageData) {
             imgData = imageData.base64EncodedString(options: .lineLength64Characters)
+            lblUploadedImage.text = "Image Uploaded."
+            lblUploadedImage.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         }
     }
     
@@ -507,15 +513,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             imgAdult.image = UIImage(named: "check")
         }
     }
-    @IBAction func btnColor(_ sender: Any) {
-        if color == true {
-            color = false
-            imgFrostingColor.image = UIImage(named: "check")
-        } else {
-            color = true
-            imgFrostingColor.image = UIImage(named: "uncheck")
-        }
-    }
+    
     @IBAction func btnBdayCelb(_ sender: UIButton) {
         if sender.tag == 1{
             bday = "1"
@@ -649,6 +647,14 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.guestHeight.constant = self.collectionGuests.contentSize.height + 40
+            self.collHeight.constant = self.collectionFlavour.contentSize.height + 40
+            self.flvrViewHeight.constant = self.collHeight.constant + 280
+        }
     }
     
     //------------------------------------------------------
