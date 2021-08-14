@@ -145,10 +145,9 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     
     @objc func readyButtonAction(sender : UIButton) {
         
-        DisplayAlertManager.shared.displayAlertWithCancelOk(target: self, animated: true, message: "Are you sure want to deliver this order?") {
+        DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: "Are you sure want to deliver this order?") {
             
-        } handlerOk: {
-            
+        } handlerYes: {
             DispatchQueue.main.async {
                 
                 LoadingManager.shared.showLoading()
@@ -157,8 +156,24 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
                     
                 }
             }
-            
+
         }
+
+        
+//        DisplayAlertManager.shared.displayAlertWithCancelOk(target: self, animated: true, message: "Are you sure want to deliver this order?") {
+            
+//        } handlerOk: {
+//
+//            DispatchQueue.main.async {
+//
+//                LoadingManager.shared.showLoading()
+//
+//                self.performStatus { (flag : Bool) in
+//
+//                }
+//            }
+//
+//        }
         
     }
     
