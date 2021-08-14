@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TVw-3T-7pU">
     <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -503,11 +505,23 @@
                                             <action selector="btnBack:" destination="NDe-Rq-XXG" eventType="touchUpInside" id="cey-WQ-G3O"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieG-8X-SO1">
-                                        <rect key="frame" x="938" y="96.5" width="40" height="40"/>
-                                        <state key="normal" image="add"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieG-8X-SO1">
+                                        <rect key="frame" x="984" y="96.5" width="40" height="40"/>
                                         <connections>
                                             <action selector="btnAddRow:" destination="NDe-Rq-XXG" eventType="touchUpInside" id="yYC-F0-Fd3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRZ-hx-Dcn">
+                                        <rect key="frame" x="872" y="95.5" width="82" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="9R2-sP-pux"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneBtn:" destination="NDe-Rq-XXG" eventType="touchUpInside" id="PT7-Sd-3AV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -519,11 +533,13 @@
                                     <constraint firstAttribute="trailing" secondItem="DAz-Wv-WEd" secondAttribute="trailing" id="CRK-dw-fcs"/>
                                     <constraint firstItem="DAz-Wv-WEd" firstAttribute="top" secondItem="Yoh-d8-W2w" secondAttribute="bottom" constant="15" id="Def-HE-Mcw"/>
                                     <constraint firstItem="QeZ-n6-X6W" firstAttribute="centerX" secondItem="IvN-tg-nBA" secondAttribute="centerX" id="Eep-qA-OKT"/>
-                                    <constraint firstAttribute="trailing" secondItem="ieG-8X-SO1" secondAttribute="trailing" constant="46" id="KIf-Tr-31v"/>
+                                    <constraint firstAttribute="trailing" secondItem="ieG-8X-SO1" secondAttribute="trailing" id="KIf-Tr-31v"/>
                                     <constraint firstItem="rTt-0e-m2t" firstAttribute="centerY" secondItem="Yoh-d8-W2w" secondAttribute="centerY" id="NGh-gf-Z4G"/>
                                     <constraint firstItem="DAz-Wv-WEd" firstAttribute="leading" secondItem="IvN-tg-nBA" secondAttribute="leading" id="Tg7-I7-byy"/>
                                     <constraint firstItem="ieG-8X-SO1" firstAttribute="width" secondItem="rTt-0e-m2t" secondAttribute="width" id="UIP-XV-f2a"/>
                                     <constraint firstAttribute="bottom" secondItem="DAz-Wv-WEd" secondAttribute="bottom" id="V8d-yk-vbI"/>
+                                    <constraint firstItem="ieG-8X-SO1" firstAttribute="leading" secondItem="VRZ-hx-Dcn" secondAttribute="trailing" constant="30" id="aAR-zN-xaD"/>
+                                    <constraint firstItem="VRZ-hx-Dcn" firstAttribute="centerY" secondItem="ieG-8X-SO1" secondAttribute="centerY" id="dxx-8y-baW"/>
                                     <constraint firstItem="QeZ-n6-X6W" firstAttribute="top" secondItem="IvN-tg-nBA" secondAttribute="top" id="eyV-Qs-OuZ"/>
                                     <constraint firstItem="ieG-8X-SO1" firstAttribute="centerY" secondItem="rTt-0e-m2t" secondAttribute="centerY" id="pUC-gn-OBA"/>
                                     <constraint firstItem="ieG-8X-SO1" firstAttribute="height" secondItem="rTt-0e-m2t" secondAttribute="height" id="vJy-Pm-ruD"/>
@@ -858,7 +874,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bde-Kw-E0m">
                                                                 <rect key="frame" x="542" y="0.0" width="80.5" height="60"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produced" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ks-sN-hMF">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchased" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ks-sN-hMF">
                                                                         <rect key="frame" x="2" y="2" width="76.5" height="56"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                                         <nil key="textColor"/>
@@ -1022,7 +1038,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-ja-kt5">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-ja-kt5">
                                                 <rect key="frame" x="20" y="230" width="984" height="800"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -1365,6 +1381,7 @@
                                             <constraint firstItem="C3v-ja-kt5" firstAttribute="leading" secondItem="QMj-9L-chS" secondAttribute="leading" id="jUJ-gu-Dzf"/>
                                             <constraint firstItem="Gt4-JD-k4R" firstAttribute="trailing" secondItem="QMj-9L-chS" secondAttribute="trailing" id="jeu-Ar-nFz"/>
                                             <constraint firstItem="Gt4-JD-k4R" firstAttribute="top" secondItem="C3v-ja-kt5" secondAttribute="bottom" constant="10" id="olK-g3-WM4"/>
+                                            <constraint firstAttribute="bottom" secondItem="Mo8-SB-F8w" secondAttribute="bottom" constant="224" id="qU7-ly-fDG"/>
                                             <constraint firstItem="Mo8-SB-F8w" firstAttribute="height" secondItem="QMj-9L-chS" secondAttribute="height" id="quM-md-Sdo"/>
                                             <constraint firstItem="Xty-x4-MJE" firstAttribute="leading" secondItem="wOc-a8-U45" secondAttribute="leading" constant="20" id="sRg-ew-TCY"/>
                                             <constraint firstItem="C3v-ja-kt5" firstAttribute="trailing" secondItem="QMj-9L-chS" secondAttribute="trailing" id="zGe-pj-azF"/>
@@ -1617,8 +1634,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="256" height="256"/>
         <image name="back" width="100" height="100"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -40,6 +40,38 @@ struct Request {
         static let item_detail = "item_detail"
         static let orderStatu = "order_ready_status"
         static let order_id = "order_id"
+        
+        //Add order
+        static let ordered_date = "ordered_date"
+        static let order_time = "order_time"
+        static let order_day = "order_day"
+        static let phone_day = "phone_day"
+        static let phone_evening = "phone_evening"
+        static let order_surprise = "order_surprise"
+        static let order_pick = "order_pick"
+        static let ice_cream_flavour = "ice_cream_flavour"
+        static let cake_flavour = "cake_flavour"
+        static let crust = "crust"
+        static let roll_cake_flavour = "roll_cake_flavour"
+        static let cake_name = "cake_name"
+        static let frosting_color = "frosting_color"
+        static let message = "message"
+        static let birthday = "birthday"
+        static let congratulation = "congratulation"
+        static let anniversary = "anniversary"
+        static let cake_price = "cake_price"
+        static let photo_cake_price = "photo_cake_price"
+        static let special_design_price = "special_design_price"
+        static let candles = "candles"
+        static let total_cost = "total_cost"
+        static let deposit_paid = "deposit_paid"
+        static let balance = "balance"
+        static let expected_order_ready = "expected_order_ready"
+        static let photo = "photo"
+        static let total_guest = "total_guest"
+        static let age = "age_group"
+        static let user_id = "user_id"
+        
     }
     
     struct Method {
@@ -49,6 +81,8 @@ struct Request {
         static let addDailyInventory = "DailyInventorySubmit.php"
         static let allEmployees = "GetAllEmployeedetail.php"
         static let readyStatus = "OrderReadyStatus.php"
+        static let addOrder = "OrderRequest.php"
+        static let getAllItems = "GetAllItemsForInventory.php"
     }    
 }
 

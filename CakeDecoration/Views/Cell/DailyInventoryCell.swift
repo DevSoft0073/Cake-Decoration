@@ -9,9 +9,36 @@ import UIKit
 
 class DailyInventoryCell: UITableViewCell {
 
+    @IBOutlet weak var lblItemName: UILabel!
+    @IBOutlet weak var displayFld: UITextField!
+    @IBOutlet weak var walkinFld: UITextField!
+    @IBOutlet weak var otherStorageFld: UITextField!
+    @IBOutlet weak var totalFld: UITextField!
+    @IBOutlet weak var priceFld: UITextField!
+    @IBOutlet weak var producedFld: UITextField!
+    @IBOutlet weak var expectTotalFld: UITextField!
+    @IBOutlet weak var soldFld: UITextField!
+    @IBOutlet weak var actualTotalFld: UITextField!
+    @IBOutlet weak var varianceFld: UITextField!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        displayFld.keyboardType = .numberPad
+        walkinFld.keyboardType = .numberPad
+        otherStorageFld.keyboardType = .numberPad
+        totalFld.keyboardType = .numberPad
+        priceFld.keyboardType = .numberPad
+        producedFld.keyboardType = .numberPad
+        expectTotalFld.keyboardType = .numberPad
+        soldFld.keyboardType = .numberPad
+        actualTotalFld.keyboardType = .numberPad
+        actualTotalFld.keyboardType = .numberPad
+        totalFld.isUserInteractionEnabled = false
+        expectTotalFld.isUserInteractionEnabled = false
+        priceFld.isUserInteractionEnabled = false
+        varianceFld.isUserInteractionEnabled = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

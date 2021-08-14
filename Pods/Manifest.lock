@@ -8,6 +8,7 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - SVProgressHUD-0.8.1 (0.8)
   - "UITextView+Placeholder (1.4.0)"
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Localize-Swift (~> 3.1.0)
   - lottie-ios (~> 3.1.6)
   - SDWebImage (~> 4.4.5)
+  - SVProgressHUD-0.8.1
   - "UITextView+Placeholder (~> 1.4.0)"
 
 SPEC REPOS:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Localize-Swift
     - lottie-ios
     - SDWebImage
+    - SVProgressHUD-0.8.1
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -39,8 +42,9 @@ SPEC CHECKSUMS:
   Localize-Swift: 4bed4f0ccac8be2ec3517ee359da80ba2adb0fae
   lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: cb4a4386141a6e7e3e0392cf6b14940d3ab654c4
+PODFILE CHECKSUM: 19d870147d4970512b8396a4ad4e210dafbaa3fa
 
 COCOAPODS: 1.10.2

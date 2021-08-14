@@ -29,6 +29,7 @@ class PreferenceManager: NSObject {
     private let keyDeviceToken = "deviceToken"
     private let keyUserId = "userId"
     private let userType = "userType"
+    private let keyUserData = "keyUserData"
 
     var deviceToken: String? {
         set {
@@ -47,6 +48,31 @@ class PreferenceManager: NSObject {
                 return userDefault.string(forKey: keyDeviceToken)
             }            
         }
+    }
+    
+    var currentUser: String? {
+        set {
+            if newValue != nil {
+                userDefault.set(newValue!, forKey: keyUserData)
+            } else {
+                userDefault.removeObject(forKey: keyUserData)
+            }
+            userDefault.synchronize()
+        }
+        get {
+            return userDefault.string(forKey: keyUserData)
+        }
+    }
+    
+    var currentUserModal: UserModal? {
+        if let currentUser = currentUser {
+            do {
+                return try UserModal(currentUser)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return nil
     }
 
     var userId: String? {

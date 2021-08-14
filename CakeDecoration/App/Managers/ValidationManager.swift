@@ -1,23 +1,28 @@
 //
 //  ValidationManager.swift
-//  Nodat
+//  SessionControl
 //
-//  Created by apple on 05/10/20.
-//  Copyright © 2020 Apple. All rights reserved.
+//  Created by Dharmesh Avaiya on 22/08/20.
+//  Copyright © 2020 dharmesh. All rights reserved.
 //
 
 import UIKit
 
-
 enum RegularExpressions: String {
     case url = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
-    //case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-    case email = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
-    case phone = "^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$"
+    case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//    case phone = "^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$"
+//    case phone =  "^\\d{3}\\d{3}\\d{5}$"
+    case phone =  "[0-11]"
+    case accountNumber = "[0-9]{9,18}"
+    case cardNumber = "[0-20]"
+    case routingNumber = "[0-9]"
+//    case ssnNumber = "^(?!(000|666|9))\\d{3}-(?!00)\\d{2}-(?!0000)\\d{4}$"
+    case ssnNumber = "^\\d{3}-\\d{2}-\\d{4}$"
+    case cvv = "[0-3]"
+    case expiryDate = "[0-5]"
     case password8AS = "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}"
     case password82US2N3L = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
-    case username = "^[a-zA-Z][a-zA-Z.-_]*"
-    case zipCode = "^[0-9]{5}(-[0-9]{4})?$"
 }
 
 class ValidationManager: NSObject {
@@ -62,28 +67,9 @@ class ValidationManager: NSObject {
         }
     }
     
-    func isValid(year: String) -> Bool {
-        
-        let calender = Calendar.current
-        let calenderYear = calender.component(.year, from: Date())
-        
-        if let intYear = Int(year), intYear > 999, intYear <= calenderYear {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func isValidBirth(date: Date) -> Bool {
-        
-        let now = Date()
-        let calendar = Calendar.current
-        
-        let ageComponents = calendar.dateComponents([.year], from: date, to: now)
-        if let age = ageComponents.year, age > 5 && age < 110 {
-            return true
-        }
-        return false
+    func isValidSsn(_ ssn: String) -> Bool {
+      let ssnRegext = "^(?!(000|666|9))\\d{3}-(?!00)\\d{2}-(?!0000)\\d{4}$"
+      return ssn.range(of: ssnRegext, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
     

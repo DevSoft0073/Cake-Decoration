@@ -8,10 +8,11 @@
 import UIKit
 
 class FlavourCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var lblName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

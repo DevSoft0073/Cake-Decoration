@@ -67,12 +67,19 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>UITextView+Placeholder.xcscheme</key>
+		<key>SVProgressHUD-0.8.1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
+		</dict>
+		<key>UITextView+Placeholder.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>lottie-ios.xcscheme</key>
 		<dict>

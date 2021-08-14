@@ -9,6 +9,7 @@ import UIKit
 
 class GusestsListCell: UICollectionViewCell {
 
+    @IBOutlet weak var lblType: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

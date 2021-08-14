@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-class LoginInVC : UIViewController {
+class LoginInVC : BaseVC {
     
     
     //------------------------------------------------------
@@ -82,7 +82,9 @@ class LoginInVC : UIViewController {
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
-                
+                if let stringUser = try? response.data?.jsonString() {
+                    PreferenceManager.shared.currentUser = stringUser
+                }
                 let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
                 
@@ -152,8 +154,8 @@ class LoginInVC : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtEmail.text = "happyguleria123@gmail.com"
-        txtPassword.text = "Qwerty@123"
+//        txtEmail.text = "happyguleria123@gmail.com"
+//        txtPassword.text = "Qwerty@123"
     }
     
     //------------------------------------------------------

@@ -60,6 +60,14 @@ func newJSONDecoder() -> JSONDecoder {
     return decoder
 }
 
+func localized(code: Int) -> String {
+    
+    let codeKey = String(format: "error_%d", code)
+    let localizedMessage = codeKey.localized()
+    return localizedMessage
+}
+
+
 func newJSONEncoder() -> JSONEncoder {
     let encoder = JSONEncoder()
     if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
@@ -104,7 +112,11 @@ extension UITextField {
         //Add DatePicker as inputView
         let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         self.inputView = datePicker
         
         //Add Tool Bar as input AccessoryView

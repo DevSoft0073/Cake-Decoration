@@ -15,6 +15,7 @@ target 'CakeDecoration' do
     pod 'SDWebImage', '~> 4.4.5'
     pod 'KRPullLoader'
     pod 'UITextView+Placeholder', '~> 1.4.0'
+    pod 'SVProgressHUD-0.8.1'
 
   target 'CakeDecorationTests' do
     inherit! :search_paths
