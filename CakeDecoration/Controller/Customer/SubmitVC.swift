@@ -561,7 +561,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let noOfCellsInRow = 5
+        let noOfCellsInRow = 3
         
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         

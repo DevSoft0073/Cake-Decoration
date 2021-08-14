@@ -32,7 +32,7 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     //MARK: Custome
     
     func configureUI(){
-                
+        
         let identifier = String(describing: InventoryCell.self)
         let nibCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblList.register(nibCell, forCellReuseIdentifier: identifier)
@@ -48,32 +48,32 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.inventoryListing, parameter: parameter, showLoader: false, decodingType: ResponseModal<[InventoryModal]>.self, successBlock: { (response: ResponseModal<[InventoryModal]>) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             if response.code == Status.Code.success {
                 
                 self.items.append(contentsOf: response.data ?? [])
                 self.itemCounts = self.items.count
                 self.tblList.reloadData()
-
+                
             } else {
-
+                
                 delay {
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+//                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             delay {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
         })
     }
-
+    
     
     //------------------------------------------------------
     
@@ -94,8 +94,15 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     //MARK: TableView Delegate Datasource Method(s)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if items.count == 0 {
+            self.tblList.setEmptyMessage("No data")
+        } else {
+            self.tblList.restore()
+        }
         return itemCounts
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InventoryCell.self)) as? InventoryCell {

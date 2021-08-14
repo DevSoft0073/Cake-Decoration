@@ -9,9 +9,9 @@ import UIKit
 
 class OrderListingCell: UITableViewCell {
 
+    @IBOutlet weak var lblType: UILabel!
+    @IBOutlet weak var lblDueDate: UILabel!
     @IBOutlet weak var btnReady: UIButton!
-    @IBOutlet weak var btnPay: UIButton!
-    @IBOutlet weak var lblTotal: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblOrder: UILabel!
     @IBOutlet weak var lblName: UILabel!

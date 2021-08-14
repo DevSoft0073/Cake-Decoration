@@ -96,7 +96,7 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
             } else {
                 
                 delay {
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+//                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
             
@@ -115,7 +115,12 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     //MARK: TableView Delegate Datasource Method(s)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if itemCounts == 0 {
+            self.tblList.setEmptyMessage("No data")
+        } else {
+            self.tblList.restore()
+        }
+        return itemCounts
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

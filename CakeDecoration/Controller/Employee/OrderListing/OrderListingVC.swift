@@ -108,7 +108,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
             } else {
                 
                 delay {
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+//                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                     self.items.removeAll()
                     self.tblListing.reloadData()
                 }
@@ -224,6 +224,11 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     //MARK: TableView Delegate Datasource Method(s)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if items.count == 0 {
+            self.tblListing.setEmptyMessage("No data")
+        } else {
+            self.tblListing.restore()
+        }
         return items.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -233,9 +238,11 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
             let data = items[indexPath.row]
             cell.lblOrder.text = "Order ID : \(data.orderID ?? String())"
             cell.lblName.text = "Customer name : \(data.name ?? String())"
-            cell.lblDate.text = "Expected date : \(data.expectedOrderReady ?? String())"
-            cell.lblTotal.text = "Total Price : \(data.totalCost ?? String())"
-            cell.btnPay.addTarget(self, action: #selector(payButtonAction(sender:)), for: .touchUpInside)
+            cell.lblDate.text = "Ice Cream Flavour : \(data.iceCreamFlavour ?? String())"
+            cell.lblType.text = "Cake Flavour : \(data.cakeFlavour ?? String())"
+            let dateVal = NumberFormatter().number(from: data.expectedOrderReady ?? "")?.doubleValue ?? 0.0
+            let timeStamp = self.convertTimeStampToDate(dateVal: dateVal)
+            cell.lblDueDate.text = timeStamp
             cell.btnReady.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
             cell.btnReady.tag = indexPath.row
             return cell
@@ -244,7 +251,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 325
+        return 335
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -253,15 +260,6 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     //------------------------------------------------------
     
     //MARK: Table view button action
-    
-    @objc func payButtonAction(sender : UIButton) {
-        
-        DisplayAlertManager.shared.displayAlertWithCancelOk(target: self, animated: true, message: "Are you sure this order price is paid?") {
-            
-        } handlerOk: {
-            
-        }
-    }
     
     @objc func readyButtonAction(sender : UIButton) {
         let data = items[sender.tag]
@@ -303,4 +301,16 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     }
     
     //------------------------------------------------------
+}
+
+extension UIViewController {
+    func convertTimeStampToDate(dateVal : Double) -> String{
+        let timeinterval = TimeInterval(dateVal)
+        let dateFromServer = Date(timeIntervalSince1970:timeinterval)
+        print(dateFromServer)
+        let dateFormater = DateFormatter()
+        dateFormater.timeZone = .current
+        dateFormater.dateFormat = "d MMM yyyy"
+        return dateFormater.string(from: dateFromServer)
+    }
 }
