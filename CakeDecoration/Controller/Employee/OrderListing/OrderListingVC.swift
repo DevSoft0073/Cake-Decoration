@@ -95,7 +95,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
                 Request.Parameter.week : "",
             ]
         }
-        
+                
         RequestManager.shared.requestPOST(requestMethod: Request.Method.orderListing, parameter: parameter, showLoader: false, decodingType: ResponseModal<[OrderListingModal]>.self, successBlock: { (response: ResponseModal<[OrderListingModal]>) in
             
             LoadingManager.shared.hideLoading()
@@ -109,6 +109,8 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
                 
                 delay {
                     DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                    self.items.removeAll()
+                    self.tblListing.reloadData()
                 }
             }
             
@@ -185,6 +187,13 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     }
     
     @objc func onDoneButtonTapped() {
+        
+        LoadingManager.shared.showLoading()
+        
+        performGetListing { (flag : Bool) in
+            
+        }
+        
         toolBar.removeFromSuperview()
         picker.removeFromSuperview()
     }
@@ -207,12 +216,6 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedValue = selectedArray[row]
-        
-        LoadingManager.shared.showLoading()
-        
-        performGetListing { (flag : Bool) in
-            
-        }
         print(selectedArray[row])
     }
     

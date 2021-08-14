@@ -19,7 +19,8 @@ class PreferenceManager: NSObject {
     //MARK: Settings
     
     var userBaseURL: String {
-        return "http://3.138.179.162/CakeDecoration/"
+        return "http://18.217.235.67/CakeDecoration/"
+        
     }
     
     //------------------------------------------------------
