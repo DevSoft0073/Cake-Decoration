@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func switchToLanding(){
-        let vc = LandingVC.instantiate(fromAppStoryboard: .Landing)
+        let vc = HomeListingVC.instantiate(fromAppStoryboard: .Main)
         let nav = UINavigationController(rootViewController: vc)
         nav.isNavigationBarHidden = true
         self.window?.rootViewController = vc

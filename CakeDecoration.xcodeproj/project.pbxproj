@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07861A5F5668EDDF9C9813D2 /* Pods_CakeDecorationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE08B7A3A10B7F54C1D1B77 /* Pods_CakeDecorationTests.framework */; };
+		1F5D1AE226C92777003B8062 /* EmployeeListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D1AE126C92777003B8062 /* EmployeeListingVC.swift */; };
 		1F6BE02D26BFC0C200C556DC /* EmployeeManagmentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BE02B26BFC0C200C556DC /* EmployeeManagmentOptions.swift */; };
 		1F6BE02E26BFC0C200C556DC /* EmployeeManagmentOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6BE02C26BFC0C200C556DC /* EmployeeManagmentOptions.xib */; };
 		1F6BE03126BFC1EF00C556DC /* EmployeeManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BE03026BFC1EF00C556DC /* EmployeeManagementVC.swift */; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		1619E2176F246C3569D66D09 /* Pods-CakeDecorationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeDecorationTests.debug.xcconfig"; path = "Target Support Files/Pods-CakeDecorationTests/Pods-CakeDecorationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1F5D1AE126C92777003B8062 /* EmployeeListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListingVC.swift; sourceTree = "<group>"; };
 		1F6BE02B26BFC0C200C556DC /* EmployeeManagmentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagmentOptions.swift; sourceTree = "<group>"; };
 		1F6BE02C26BFC0C200C556DC /* EmployeeManagmentOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeManagmentOptions.xib; sourceTree = "<group>"; };
 		1F6BE03026BFC1EF00C556DC /* EmployeeManagementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementVC.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				1FECEFF326BF0BD3009B43BB /* LandingPage */,
 				1F703DF126BF151600C461B2 /* UserListing */,
 				1F703DE826BF11B400C461B2 /* LoginInVC.swift */,
+				1F5D1AE126C92777003B8062 /* EmployeeListingVC.swift */,
 			);
 			path = Authantication;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				1FD1AC4D26C0292800F0E053 /* PreferenceManager.swift in Sources */,
 				1FDC094726C79FCF0085B5E5 /* CustomerListingCell.swift in Sources */,
 				1F703DF326BF153E00C461B2 /* HomeListingVC.swift in Sources */,
+				1F5D1AE226C92777003B8062 /* EmployeeListingVC.swift in Sources */,
 				1F6BE03626BFCC2100C556DC /* OrderListingVC.swift in Sources */,
 				1FEC0ADE26C310FB007A0713 /* ReadyStatus.swift in Sources */,
 				1F6C39F526C6CAC8007B4006 /* BaseVC.swift in Sources */,

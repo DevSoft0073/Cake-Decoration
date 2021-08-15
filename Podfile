@@ -7,7 +7,6 @@ target 'CakeDecoration' do
 
   # Pods for CakeDecoration
 
-    pod 'AssistantKit', '~> 0.6.1'
     pod 'IQKeyboardManagerSwift', '~> 6.5.1'
     pod 'Localize-Swift', '~> 3.1.0'
     pod 'Alamofire', '~> 4.8.1'x

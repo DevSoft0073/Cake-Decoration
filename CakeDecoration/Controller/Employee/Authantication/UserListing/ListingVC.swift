@@ -29,7 +29,7 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var details:[HomeMenu] = [HomeMenu(type: .user, name: "Inventory", image: "inventory"),HomeMenu(type: .employee, name: "Cake List", image: "list")]
     
-    var detailss:[HomeMenu] = [HomeMenu(type: .user, name: "Cake Order", image: "inventory"),HomeMenu(type: .employee, name: "Cake Status", image: "list")]
+    var detailss:[HomeMenu] = [HomeMenu(type: .user, name: "Cake Order", image: "inventory"),HomeMenu(type: .employee, name: "Order Status", image: "list")]
     
     //------------------------------------------------------
     

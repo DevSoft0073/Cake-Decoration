@@ -96,7 +96,7 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if items.count == 0 {
-            self.tblList.setEmptyMessage("No data")
+            self.tblList.setEmptyMessage("No data found!")
         } else {
             self.tblList.restore()
         }

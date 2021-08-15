@@ -62,6 +62,7 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
             if response.code == Status.Code.success {
                 
                 self.items.append(contentsOf: response.data ?? [])
+                self.itemCounts = self.items.count
                 self.tblList.reloadData()
                 
             } else {
@@ -116,7 +117,7 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if itemCounts == 0 {
-            self.tblList.setEmptyMessage("No data")
+            self.tblList.setEmptyMessage("No data found!")
         } else {
             self.tblList.restore()
         }

@@ -130,8 +130,8 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         
         parameter = [
             Request.Parameter.employeeId: currentUser?.id ?? String(),
-            Request.Parameter.orderStatu : "2",
-            Request.Parameter.order_id: "order610fc22e0dce1",
+            Request.Parameter.orderStatu : orderStatus,
+            Request.Parameter.order_id: orderID,
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.readyStatus, parameter: parameter, showLoader: false, decodingType: ResponseModal<ReadyStatus>.self, successBlock: { (response: ResponseModal<ReadyStatus>) in
@@ -225,7 +225,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if items.count == 0 {
-            self.tblListing.setEmptyMessage("No data")
+            self.tblListing.setEmptyMessage("No data found!")
         } else {
             self.tblListing.restore()
         }

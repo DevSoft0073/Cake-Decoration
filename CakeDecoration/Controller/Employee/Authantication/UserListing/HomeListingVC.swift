@@ -82,7 +82,7 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
             PreferenceManager.shared.curretMode = "1"
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
-            let vc = LoginInVC.instantiate(fromAppStoryboard: .Main)
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
             PreferenceManager.shared.curretMode = "2"
             self.navigationController?.pushViewController(vc, animated: true)
         }

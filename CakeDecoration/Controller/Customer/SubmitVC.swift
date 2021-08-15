@@ -244,6 +244,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1 // number of session
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if txtEmpName.isSelected == true {
             return items.count

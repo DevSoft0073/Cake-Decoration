@@ -91,16 +91,16 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                 
                 finalArray.append(newArray)
                 
-                if cell.displayFld.text!.isEmpty || cell.walkinFld.text!.isEmpty || cell.otherStorageFld.text!.isEmpty || cell.producedFld.text!.isEmpty || cell.soldFld.text!.isEmpty || cell.actualTotalFld.text!.isEmpty {
-                    isEmptyFieldExist = true
-                }
+//                if cell.displayFld.text!.isEmpty || cell.walkinFld.text!.isEmpty || cell.otherStorageFld.text!.isEmpty || cell.producedFld.text!.isEmpty || cell.soldFld.text!.isEmpty || cell.actualTotalFld.text!.isEmpty {
+//                    isEmptyFieldExist = true
+//                }
             }
         }
         
-        if isEmptyFieldExist {
-            DisplayAlertManager.shared.displayAlert(message: "Please add values for all fields.")
-            return
-        }
+//        if isEmptyFieldExist {
+//            DisplayAlertManager.shared.displayAlert(message: "Please add values for all fields.")
+//            return
+//        }
         
         print("here is final array",finalArray)
         
@@ -309,8 +309,16 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
 
 extension DailyInventoryVC : UITextFieldDelegate{
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//
+//        self.performCalculation()
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.performCalculation()
+        
+        return true
+        
     }
+    
 }
