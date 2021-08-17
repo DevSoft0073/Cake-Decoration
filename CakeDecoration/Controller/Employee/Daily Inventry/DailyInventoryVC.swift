@@ -87,23 +87,12 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                     Request.Parameter.sold : cell.soldFld.text ?? "",
                     Request.Parameter.actual_total : cell.actualTotalFld.text ?? "",
                     Request.Parameter.variance : cell.varianceFld.text ?? "",
+                    Request.Parameter.onhand : cell.presetTxt.text ?? "",
                 ]
-                
                 finalArray.append(newArray)
-                
-//                if cell.displayFld.text!.isEmpty || cell.walkinFld.text!.isEmpty || cell.otherStorageFld.text!.isEmpty || cell.producedFld.text!.isEmpty || cell.soldFld.text!.isEmpty || cell.actualTotalFld.text!.isEmpty {
-//                    isEmptyFieldExist = true
-//                }
             }
         }
-        
-//        if isEmptyFieldExist {
-//            DisplayAlertManager.shared.displayAlert(message: "Please add values for all fields.")
-//            return
-//        }
-        
-        print("here is final array",finalArray)
-        
+                
         let parameter: [String: Any] = [
             Request.Parameter.employeeId: currentUser?.id ?? String(),
             Request.Parameter.avgVal : txtRetailValue.text ?? String(),
@@ -309,10 +298,10 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
 
 extension DailyInventoryVC : UITextFieldDelegate{
     
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//
-//        self.performCalculation()
-//    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        self.performCalculation()
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.performCalculation()

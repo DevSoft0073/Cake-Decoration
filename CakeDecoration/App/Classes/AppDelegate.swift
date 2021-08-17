@@ -26,12 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
     func switchToLanding(){
         let vc = HomeListingVC.instantiate(fromAppStoryboard: .Main)
         let nav = UINavigationController(rootViewController: vc)
         nav.isNavigationBarHidden = true
-        self.window?.rootViewController = vc
+        self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
     }
 

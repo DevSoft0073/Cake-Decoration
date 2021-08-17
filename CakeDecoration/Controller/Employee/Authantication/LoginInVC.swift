@@ -157,6 +157,7 @@ class LoginInVC : BaseVC , UIPickerViewDelegate, UITextFieldDelegate ,UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         txtEmail.text = items[row].name
+        PreferenceManager.shared.userId = items[row].id
     }
     
     

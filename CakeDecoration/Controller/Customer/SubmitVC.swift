@@ -157,6 +157,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = false
             txtSelectCrust.isSelected = false
             txtSelextRoll.isSelected = false
+            txtEmpName.text = items.first?.name
             
         } else if textField == txtSelectDay {
             txtEmpName.isSelected = false
@@ -165,6 +166,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = false
             txtSelectCrust.isSelected = false
             txtSelextRoll.isSelected = false
+            txtSelectDay.text = dayArray.first
             
         } else if textField == txtSelectTIme {
             txtEmpName.isSelected = false
@@ -173,6 +175,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = false
             txtSelectCrust.isSelected = false
             txtSelextRoll.isSelected = false
+            txtSelectTIme.text = selectTime.first
             
         } else if textField == txtSelectFlvOur {
             txtEmpName.isSelected = false
@@ -181,6 +184,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = true
             txtSelectCrust.isSelected = false
             txtSelextRoll.isSelected = false
+            txtSelectFlvOur.text = cakeFlv.first
             
         } else if textField == txtSelectCrust {
             
@@ -190,6 +194,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = false
             txtSelectCrust.isSelected = true
             txtSelextRoll.isSelected = false
+            txtSelectCrust.text = curstArray.first
             
         } else if textField == txtSelextRoll {
             txtEmpName.isSelected = false
@@ -198,6 +203,7 @@ class SubmitVC : BaseVC, UICollectionViewDelegate, UICollectionViewDataSource ,U
             txtSelectFlvOur.isSelected = false
             txtSelectCrust.isSelected = false
             txtSelextRoll.isSelected = true
+            txtSelextRoll.text = rollCakeArray.first
         }
         createPickerView()
         dismissPickerView()

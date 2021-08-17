@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - InventoryModal
-struct InventoryModal: Codable {
+struct InventoryModal: Codable,Hashable {
     var inventoryID, employeeID, inventoryDate, created: String?
     var disabled: String?
 

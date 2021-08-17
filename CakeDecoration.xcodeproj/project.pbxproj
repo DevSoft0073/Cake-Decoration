@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07861A5F5668EDDF9C9813D2 /* Pods_CakeDecorationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE08B7A3A10B7F54C1D1B77 /* Pods_CakeDecorationTests.framework */; };
+		1F015D7326CAB853007F4B2C /* ShowSubmitDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F015D7226CAB853007F4B2C /* ShowSubmitDetailsVC.swift */; };
+		1F2091D626CC31A9004A636F /* AddedInventoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2091D526CC31A9004A636F /* AddedInventoryVC.swift */; };
 		1F5D1AE226C92777003B8062 /* EmployeeListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D1AE126C92777003B8062 /* EmployeeListingVC.swift */; };
 		1F6BE02D26BFC0C200C556DC /* EmployeeManagmentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BE02B26BFC0C200C556DC /* EmployeeManagmentOptions.swift */; };
 		1F6BE02E26BFC0C200C556DC /* EmployeeManagmentOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6BE02C26BFC0C200C556DC /* EmployeeManagmentOptions.xib */; };
@@ -99,6 +101,8 @@
 
 /* Begin PBXFileReference section */
 		1619E2176F246C3569D66D09 /* Pods-CakeDecorationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CakeDecorationTests.debug.xcconfig"; path = "Target Support Files/Pods-CakeDecorationTests/Pods-CakeDecorationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1F015D7226CAB853007F4B2C /* ShowSubmitDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSubmitDetailsVC.swift; sourceTree = "<group>"; };
+		1F2091D526CC31A9004A636F /* AddedInventoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedInventoryVC.swift; sourceTree = "<group>"; };
 		1F5D1AE126C92777003B8062 /* EmployeeListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListingVC.swift; sourceTree = "<group>"; };
 		1F6BE02B26BFC0C200C556DC /* EmployeeManagmentOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagmentOptions.swift; sourceTree = "<group>"; };
 		1F6BE02C26BFC0C200C556DC /* EmployeeManagmentOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeManagmentOptions.xib; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				1F6BE03226BFCA3500C556DC /* DailyInventoryVC.swift */,
 				1FDC094926C7AFC60085B5E5 /* InventoryListingVC.swift */,
+				1F2091D526CC31A9004A636F /* AddedInventoryVC.swift */,
 			);
 			path = "Daily Inventry";
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			children = (
 				1FD1AC5426C0333100F0E053 /* SubmitVC.swift */,
 				1FDC094326C79F020085B5E5 /* CustomerOrderListing.swift */,
+				1F015D7226CAB853007F4B2C /* ShowSubmitDetailsVC.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -867,7 +873,9 @@
 				1FD1AC4926C028B400F0E053 /* NavigationManager.swift in Sources */,
 				1FDC095226C7DA540085B5E5 /* InventoryModal.swift in Sources */,
 				1FDC094426C79F020085B5E5 /* CustomerOrderListing.swift in Sources */,
+				1F015D7326CAB853007F4B2C /* ShowSubmitDetailsVC.swift in Sources */,
 				1FEC0AD526C2D90A007A0713 /* LocalizableConstants.swift in Sources */,
+				1F2091D626CC31A9004A636F /* AddedInventoryVC.swift in Sources */,
 				1FD1AC3826C0194800F0E053 /* UserModal.swift in Sources */,
 				1FECEFF526BF0BF1009B43BB /* LandingVC.swift in Sources */,
 				1FECEFDD26BF0937009B43BB /* HomeDetails.swift in Sources */,
@@ -1085,7 +1093,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = R39M5V8WTV;
 				INFOPLIST_FILE = CakeDecoration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1108,7 +1116,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = R39M5V8WTV;
 				INFOPLIST_FILE = CakeDecoration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

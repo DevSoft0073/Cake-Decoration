@@ -49,6 +49,65 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
         tblList.separatorStyle = .none
     }
     
+    func showAlertController(fromAdmin: Bool){
+        let alert = UIAlertController(title: "Authentication Required!", message: "You need to enter your administrator password to continue.", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.isSecureTextEntry = true
+            textField.placeholder = "Password"
+        }
+        alert .addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { [weak alert] (_) in}))
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            
+            if textField?.text?.isEmpty == true {
+                DisplayAlertManager.shared.displayAlert(message: "Please enter password")
+            }else{
+                LoadingManager.shared.showLoading()
+                
+                self.performSignIn(password: textField?.text ?? String()) { (flag : Bool) in
+                    
+                }
+            }
+            
+        }))
+    
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func performSignIn(password : String ,completion:((_ flag: Bool) -> Void)?) {
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.password: password,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.login, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                if let stringUser = try? response.data?.jsonString() {
+                    PreferenceManager.shared.currentUser = stringUser
+                }
+                let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            } else {
+                
+                delay {
+                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
@@ -78,13 +137,11 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = details[indexPath.row].type
         if type == .user {
-            let vc = LoginInVC.instantiate(fromAppStoryboard: .Main)
             PreferenceManager.shared.curretMode = "1"
-            self.navigationController?.pushViewController(vc, animated: true)
+            showAlertController(fromAdmin: type == .user)
         }else{
-            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
             PreferenceManager.shared.curretMode = "2"
-            self.navigationController?.pushViewController(vc, animated: true)
+            showAlertController(fromAdmin: type == .employee)
         }
     }
     

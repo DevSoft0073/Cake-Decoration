@@ -129,7 +129,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         var parameter: [String: Any] = [:]
         
         parameter = [
-            Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.employeeId: PreferenceManager.shared.userId ?? String(),
             Request.Parameter.orderStatu : orderStatus,
             Request.Parameter.order_id: orderID,
         ]
@@ -249,12 +249,16 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         }
         return UITableViewCell()
     }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 335
+        return 360
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let orderData = items[indexPath.row]
+        let vc = ShowSubmitDetailsVC.instantiate(fromAppStoryboard: .Customer)
+        vc.orderDetail = orderData
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //------------------------------------------------------
@@ -284,7 +288,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        tblListing.separatorStyle = .none
         LoadingManager.shared.showLoading()
         
         delay {

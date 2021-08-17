@@ -27,9 +27,11 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Variable Declarations
     
-    var details:[HomeMenu] = [HomeMenu(type: .user, name: "Inventory", image: "inventory"),HomeMenu(type: .employee, name: "Cake List", image: "list")]
+//    var details:[HomeMenu] = [HomeMenu(type: .user, name: "Inventory", image: "inventory"),HomeMenu(type: .employee, name: "Cake List", image: "list")]
     
     var detailss:[HomeMenu] = [HomeMenu(type: .user, name: "Cake Order", image: "inventory"),HomeMenu(type: .employee, name: "Order Status", image: "list")]
+    
+    var details:[InventoryDetailsItems] = [InventoryDetailsItems(type: .add, name: "Inventory", image: "inventory"),InventoryDetailsItems(type: .cakeList, name: "Cake List", image: "list"),InventoryDetailsItems(type: .inventory, name: "Inventory Listing", image: "list")]
     
     //------------------------------------------------------
     
@@ -79,8 +81,13 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return details.count
+        if PreferenceManager.shared.curretMode == "1"{
+            return details.count
+        }else{
+            return detailss.count
+        }
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeOptionsCell.self)) as? HomeOptionsCell {
@@ -110,11 +117,14 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if PreferenceManager.shared.curretMode == "1"{
             let type = details[indexPath.row].type
-            if type == .user {
+            if type == .add {
                 let vc = InventoryListingVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else{
+            }else if type == .cakeList{
                 let vc = OrderListingVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else if type == .inventory {
+                let vc = AddedInventoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }else{

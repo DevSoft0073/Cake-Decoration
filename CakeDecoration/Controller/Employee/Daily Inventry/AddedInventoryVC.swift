@@ -1,18 +1,20 @@
 //
-//  InventoryListingVC.swift
+//  AddedInventoryVC.swift
 //  CakeDecoration
 //
-//  Created by MyMac on 14/08/21.
+//  Created by MyMac on 17/08/21.
 //
 import UIKit
 import Foundation
 
-class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
+class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
+    
     
     @IBOutlet weak var tblList: UITableView!
     
     var items: [InventoryModal] = []
     var itemCounts = 0
+    
     //------------------------------------------------------
     
     //MARK: Memory Management Method
@@ -47,7 +49,7 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
             Request.Parameter.user_id: currentUser?.id ?? String(),
         ]
         
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.inventoryListing, parameter: parameter, showLoader: false, decodingType: ResponseModal<[InventoryModal]>.self, successBlock: { (response: ResponseModal<[InventoryModal]>) in
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.dailyInventory, parameter: parameter, showLoader: false, decodingType: ResponseModal<[InventoryModal]>.self, successBlock: { (response: ResponseModal<[InventoryModal]>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -55,7 +57,6 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
                 
                 self.items.append(contentsOf: response.data ?? [])
                 self.itemCounts = self.items.count
-                self.items = self.items.removingDuplicates()
                 self.tblList.reloadData()
                 
             } else {
@@ -73,21 +74,6 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
         })
-    }
-    
-    
-    //------------------------------------------------------
-    
-    //MARK: Action
-    
-    @IBAction func btnBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func btnAdd(_ sender: Any) {
-        let vc = DailyInventoryVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     //------------------------------------------------------
@@ -124,19 +110,17 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    //------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         tblList.separatorColor = .clear
         tblList.separatorStyle = .none
@@ -148,6 +132,13 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         self.performGetListing { (flag : Bool) in
             
         }
+        
+    }
+    
+    //------------------------------------------------------
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     //------------------------------------------------------

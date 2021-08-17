@@ -9,6 +9,7 @@ import UIKit
 
 class DailyInventoryCell: UITableViewCell {
 
+    @IBOutlet weak var presetTxt: UITextField!
     @IBOutlet weak var lblItemName: UILabel!
     @IBOutlet weak var displayFld: UITextField!
     @IBOutlet weak var walkinFld: UITextField!
@@ -35,9 +36,9 @@ class DailyInventoryCell: UITableViewCell {
         soldFld.keyboardType = .numberPad
         actualTotalFld.keyboardType = .numberPad
         actualTotalFld.keyboardType = .numberPad
+        presetTxt.keyboardType = .numberPad
         totalFld.isUserInteractionEnabled = false
         expectTotalFld.isUserInteractionEnabled = false
-        priceFld.isUserInteractionEnabled = false
         varianceFld.isUserInteractionEnabled = false
     }
 

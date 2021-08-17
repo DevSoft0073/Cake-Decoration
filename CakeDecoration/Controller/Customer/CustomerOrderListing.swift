@@ -50,6 +50,7 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
         
         let parameter: [String: Any] = [
             Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.role : currentUser?.role ?? String(),
             Request.Parameter.status : "1",
             Request.Parameter.month: "",
             Request.Parameter.week : "",
@@ -67,9 +68,9 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
                 
             } else {
                 
-                delay {
-                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
-                }
+//                delay {
+//                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
+//                }
             }
             
         }, failureBlock: { (error: ErrorModal) in
@@ -130,8 +131,10 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
             let data = items[indexPath.row]
             cell.lblOrder.text = "Order ID : \(data.orderID ?? String())"
             cell.cutomerName.text = "Customer name : \(data.name ?? String())"
-            cell.LblDate.text = "Expected date : \(data.expectedOrderReady ?? String())"
-            cell.lblTotalCOst.text = "Total Price : \(data.totalCost ?? String())"
+            let dateVal = NumberFormatter().number(from: data.orderDateStr ?? "")?.doubleValue ?? 0.0
+            let timeStamp = self.convertTimeStampToDate(dateVal: dateVal)
+            cell.LblDate.text = "Order Date : \(timeStamp)"
+            cell.lblTotalCOst.text = "Name : \(data.name ?? String())"
             cell.btnDeliver.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
             return cell
         }
@@ -143,6 +146,10 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let orderData = items[indexPath.row]
+        let vc = ShowSubmitDetailsVC.instantiate(fromAppStoryboard: .Customer)
+        vc.orderDetail = orderData
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //------------------------------------------------------
@@ -198,7 +205,8 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
+        tblList.separatorStyle = .none
+        tblList.separatorColor = .clear
         LoadingManager.shared.showLoading()
         
         self.performGetListing { (flag : Bool) in

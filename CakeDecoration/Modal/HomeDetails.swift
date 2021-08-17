@@ -26,19 +26,20 @@ struct HomeMenu{
 }
 
 
-struct EmployeeManagement {
+struct InventoryDetails {
     var name: String
     var image: String
     var description: String
 }
 
 
-struct EmployeeMenu{
-    var type: MenuType
+struct InventoryDetailsItems{
+    var type: InventoryMenuType
     var name: String
     var image: String
-    enum MenuType{
-        case cakeEnventory
-        case reports
+    enum InventoryMenuType{
+        case add
+        case cakeList
+        case inventory
     }
 }
