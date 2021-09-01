@@ -77,6 +77,7 @@ class HomeListingVC : UIViewController, UITableViewDelegate, UITableViewDataSour
     func performSignIn(password : String ,completion:((_ flag: Bool) -> Void)?) {
         
         let parameter: [String: Any] = [
+            Request.Parameter.role: PreferenceManager.shared.curretMode ?? String(),
             Request.Parameter.password: password,
         ]
         

@@ -41,5 +41,6 @@ struct InventoryDetailsItems{
         case add
         case cakeList
         case inventory
+        case delta
     }
 }

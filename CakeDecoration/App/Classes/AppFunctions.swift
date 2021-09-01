@@ -154,6 +154,7 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
+
 extension Array where Element: Hashable {
     func removingDuplicates() -> [Element] {
         var addedDict = [Element: Bool]()
@@ -167,4 +168,17 @@ extension Array where Element: Hashable {
         self = self.removingDuplicates()
     }
 }
+
+extension UIView {
+    func gradientVIew() {
+        let gradientView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 35))
+        let gradientLayer:CAGradientLayer = CAGradientLayer()
+        gradientLayer.frame.size = self.frame.size
+        gradientLayer.colors =
+        [UIColor.white.cgColor,UIColor.red.withAlphaComponent(1).cgColor]
+       //Use diffrent colors
+        gradientView.layer.addSublayer(gradientLayer)
+    }
+}
+
 

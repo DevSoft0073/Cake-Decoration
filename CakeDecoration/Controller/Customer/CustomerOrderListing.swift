@@ -58,13 +58,17 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.orderListing, parameter: parameter, showLoader: false, decodingType: ResponseModal<[OrderListingModal]>.self, successBlock: { (response: ResponseModal<[OrderListingModal]>) in
             
+            self.items.removeAll()
+            
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
                 
-                self.items.append(contentsOf: response.data ?? [])
-                self.itemCounts = self.items.count
-                self.tblList.reloadData()
+                delay {
+                    self.items.append(contentsOf: response.data ?? [])
+                    self.items = self.items.removingDuplicates()
+                    self.tblList.reloadData()
+                }
                 
             } else {
                 
@@ -83,18 +87,37 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
         })
     }
     
-    func performStatus(completion:((_ flag: Bool) -> Void)?) {
+    func performStatus(orderID : String , orderStatus : String ,completion:((_ flag: Bool) -> Void)?) {
         
-        RequestManager.shared.requestPOSTT(requestMethod: Request.Method.deliverStatus, showLoader: false, decodingType: ResponseModal<ReadyStatus>.self, successBlock: { (response: ResponseModal<ReadyStatus>) in
+        var parameter: [String: Any] = [:]
+        
+        parameter = [
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.statussss : "1",
+            Request.Parameter.order_id: orderID,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.deliverStatus, parameter: parameter, showLoader: false, decodingType: ResponseModal<ReadyStatus>.self, successBlock: { (response: ResponseModal<ReadyStatus>) in
             
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
+                
                 delay {
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
-                        self.navigationController?.popViewController(animated: true)
+                        
+                        delay {
+                            
+                            LoadingManager.shared.showLoading()
+                            
+                            self.performGetListing { (flag : Bool) in
+                                
+                            }
+                        }
                     }
                 }
+
+                
             } else {
                 
                 delay {
@@ -117,12 +140,12 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     //MARK: TableView Delegate Datasource Method(s)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if itemCounts == 0 {
+        if items.count == 0 {
             self.tblList.setEmptyMessage("No data found!")
         } else {
             self.tblList.restore()
         }
-        return itemCounts
+        return items.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -133,8 +156,11 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
             cell.cutomerName.text = "Customer name : \(data.name ?? String())"
             let dateVal = NumberFormatter().number(from: data.orderDateStr ?? "")?.doubleValue ?? 0.0
             let timeStamp = self.convertTimeStampToDate(dateVal: dateVal)
+            let dateVal1 = NumberFormatter().number(from: data.orderDateStr ?? "")?.doubleValue ?? 0.0
+            let timeStampp = self.convertTimeStampToDate(dateVal: dateVal1)
             cell.LblDate.text = "Order Date : \(timeStamp)"
             cell.lblTotalCOst.text = "Name : \(data.name ?? String())"
+            cell.orderDate.text = "Expected Date: \(timeStampp)"
             cell.btnDeliver.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
             return cell
         }
@@ -142,12 +168,12 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 325
+        return 350
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderData = items[indexPath.row]
-        let vc = ShowSubmitDetailsVC.instantiate(fromAppStoryboard: .Customer)
+        let vc = DetailsVC.instantiate(fromAppStoryboard: .Customer)
         vc.orderDetail = orderData
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -157,7 +183,7 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
     //MARK: Table view button action
     
     @objc func readyButtonAction(sender : UIButton) {
-        
+        let data = items[sender.tag]
         DisplayAlertManager.shared.displayAlertWithNoYes(target: self, animated: true, message: "Are you sure want to deliver this order?") {
             
         } handlerYes: {
@@ -165,11 +191,10 @@ class CustomerOrderListing : BaseVC , UITableViewDelegate , UITableViewDataSourc
                 
                 LoadingManager.shared.showLoading()
                 
-                self.performStatus { (flag : Bool) in
+                self.performStatus(orderID: data.orderID ?? "", orderStatus: "1") { (flag : Bool) in
                     
                 }
             }
-
         }
 
         

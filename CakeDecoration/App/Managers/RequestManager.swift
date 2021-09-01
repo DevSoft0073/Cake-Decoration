@@ -31,9 +31,9 @@ struct Request {
         static let display_case = "display_case"
         static let walk_in = "walk_in"
         static let other_storage = "other_storage"
-        static let total_H = "total_H"
-        static let price = "price"
-        static let purchased = "purchased"
+        static let total = "total"
+        static let last_inventory_count = "last_inventory_count"
+        static let last_inventory_date = "last_inventory_date"
         static let sold = "sold"
         static let actual_total = "actual_total"
         static let variance = "variance"
@@ -43,6 +43,13 @@ struct Request {
         static let role = "role"
         static let preset = "preset"
         static let onhand = "onhand"
+        static let statussss = "status"
+        
+        
+        static let item_id = "item_id"
+        static let ready_status = "ready_status"
+        static let inventory_id = "inventory_id"
+        static let employee_id = "employee_id"
         
         //Add order
         static let ordered_date = "ordered_date"
@@ -75,13 +82,18 @@ struct Request {
         static let age = "age_group"
         static let user_id = "user_id"
         
+        // add edit inventory
+        
+        static let itemID = "item_id"
+        static let itemName = "item_name"
+        static let dlt = "is_delete"
     }
     
     struct Method {
     
         static let login = "PasswordLogin.php"
         static let orderListing = "OrderListing.php"
-        static let addDailyInventory = "DailyInventorySubmit.php"
+        static let addDailyInventory = "AddDailyInventory.php"
         static let allEmployees = "GetAllEmployeedetail.php"
         static let readyStatus = "OrderReadyStatus.php"
         static let addOrder = "OrderRequest.php"
@@ -89,6 +101,9 @@ struct Request {
         static let deliverStatus = "OrderDeliverStatus.php"
         static let inventoryListing = "DailyInventoryListing.php"
         static let dailyInventory = "DailyInventoryPresentListing.php"
+        static let addEditInventory = "AddEditItem.php"
+        static let readyInventory = "DailyInventoryReady.php"
+        static let deltaData = "DailyInventoryDeltaListing.php"
     }    
 }
 

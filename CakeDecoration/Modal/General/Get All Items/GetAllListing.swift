@@ -12,7 +12,7 @@
 import Foundation
 
 // MARK: - GetAllListing
-struct GetAllListing: Codable {
+struct GetAllListing: Codable , Hashable{
     var itemID, userID, catID, name: String?
     var getAllListingDescription, price, quantity, created: String?
     var updated: String?

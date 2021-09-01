@@ -1,17 +1,17 @@
 //
-//  InventoryCell.swift
+//  ReadyCell.swift
 //  CakeDecoration
 //
-//  Created by MyMac on 14/08/21.
+//  Created by MyMac on 8/22/21.
 //
 
 import UIKit
 
-class InventoryCell: UITableViewCell {
+class ReadyCell: UITableViewCell {
 
-    @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var btnDlt: UIButton!
-    @IBOutlet weak var lblOrder: UILabel!
+    @IBOutlet weak var btnReady: UIButton!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

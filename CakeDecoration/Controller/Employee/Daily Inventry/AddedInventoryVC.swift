@@ -12,7 +12,7 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
     
     @IBOutlet weak var tblList: UITableView!
     
-    var items: [InventoryModal] = []
+    var items: [ShowItems] = []
     var itemCounts = 0
     
     //------------------------------------------------------
@@ -46,23 +46,28 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
     func performGetListing(completion:((_ flag: Bool) -> Void)?) {
         
         let parameter: [String: Any] = [
-            Request.Parameter.user_id: currentUser?.id ?? String(),
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
         ]
-        
-        RequestManager.shared.requestPOST(requestMethod: Request.Method.dailyInventory, parameter: parameter, showLoader: false, decodingType: ResponseModal<[InventoryModal]>.self, successBlock: { (response: ResponseModal<[InventoryModal]>) in
+        self.items.removeAll()
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllItems, parameter: parameter, showLoader: false, decodingType: ResponseModal<[ShowItems]>.self, successBlock: { (response: ResponseModal<[ShowItems]>) in
             
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
                 
                 self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
                 self.itemCounts = self.items.count
                 self.tblList.reloadData()
                 
-            } else {
+            } else if response.code == Status.Code.notfound  {
+                
+                self.items.removeAll()
+                self.tblList.reloadData()
+                
+            }else{
                 
                 delay {
-//                    DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
             
@@ -76,6 +81,85 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
         })
     }
     
+    
+    func performAddEditInventory(inventoryName : String , itemID : String , isDelete : String,completion:((_ flag: Bool) -> Void)?) {
+        
+        let parameter: [String: Any] = [
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.itemName: inventoryName,
+            Request.Parameter.itemID: itemID,
+            Request.Parameter.dlt: isDelete,
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.addEditInventory, parameter: parameter, showLoader: false, decodingType: BaseResponseModal.self, successBlock: { (response: BaseResponseModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            if response.code == Status.Code.success {
+                
+                delay {
+                    DisplayAlertManager.shared.displayAlert(message: response.message ?? String())
+                                        
+                    self.performGetListing { (flag : Bool) in
+                        
+                    }
+                    
+                }
+                
+                
+            } else {
+                
+                delay {
+                }
+            }
+            
+        }, failureBlock: { (error: ErrorModal) in
+            
+            LoadingManager.shared.hideLoading()
+            
+            delay {
+                DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
+            }
+        })
+    }
+    
+    
+    
+    //------------------------------------------------------
+    
+    //MARK: Action
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func btnAddInventory(_ sender: Any) {
+        let alert = UIAlertController(title: "Cake Decoration", message: "Add Inventory", preferredStyle: .alert)
+
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter Name"
+        }
+
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text ?? String())")
+            if textField!.text!.isEmpty{
+                return
+            }
+            
+            LoadingManager.shared.showLoading()
+            
+            self.performAddEditInventory(inventoryName: textField!.text!, itemID: "", isDelete: "0") { (flag : Bool) in
+            }
+        }))
+
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
@@ -87,7 +171,7 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
         } else {
             self.tblList.restore()
         }
-        return itemCounts
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,9 +179,12 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InventoryCell.self)) as? InventoryCell {
             cell.selectionStyle = .none
             let data = items[indexPath.row]
-            cell.lblOrder.text = "Inventory Added Date: \(data.inventoryDate ?? String())"
-            cell.lblName.text = "Inventory ID : \(data.inventoryID ?? String())"
-            cell.lblTotal.text = "Employee ID : \(data.employeeID ?? String())"
+            cell.lblOrder.text = "Item Name: \(data.itemName ?? String())"
+            cell.btnEdit.tag = indexPath.row
+            cell.btnEdit.addTarget(self, action: #selector(editInventory(sender:)), for: .touchUpInside)
+            cell.btnDlt.tag = indexPath.row
+            cell.btnDlt.addTarget(self, action: #selector(dltItems(sender:)), for: .touchUpInside)
+
             return cell
         }
         return UITableViewCell()
@@ -107,12 +194,43 @@ class AddedInventoryVC : BaseVC, UITableViewDelegate , UITableViewDataSource{
         return 200
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc func dltItems(sender : UIButton) {
+        
+        let data = items[sender.tag]
+        
+        LoadingManager.shared.showLoading()
+        
+        self.performAddEditInventory(inventoryName: "", itemID: data.itemID ?? String(), isDelete: "1") { (flag : Bool) in
+        }
     }
     
-    
-    @IBAction func btnBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+    @objc func editInventory(sender : UIButton) {
+        
+        let data = items[sender.tag]
+        
+        let alert = UIAlertController(title: "Cake Decoration", message: "Edit Inventory", preferredStyle: .alert)
+
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = data.itemName
+        }
+
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text ?? String())")
+            if textField!.text!.isEmpty{
+                return
+            }
+            
+            LoadingManager.shared.showLoading()
+            
+            self.performAddEditInventory(inventoryName: textField!.text!, itemID: data.itemID ?? String(), isDelete: "0") { (flag : Bool) in
+            }
+        }))
+
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
     
     //------------------------------------------------------

@@ -22,34 +22,72 @@
                         <rect key="frame" x="20" y="15" width="554" height="167"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7f1-8T-S03">
-                                <rect key="frame" x="10" y="15" width="534" height="140"/>
+                                <rect key="frame" x="10" y="15" width="450" height="137"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order ID: 48634534" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZG-l8-McF">
-                                        <rect key="frame" x="0.0" y="0.0" width="534" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Name: Whole scoop" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-4J-IY0">
-                                        <rect key="frame" x="0.0" y="55" width="534" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="25"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Date: 08-Aug-2021" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FI3-zg-5Ks">
-                                        <rect key="frame" x="0.0" y="110" width="534" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="137"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="450" id="TDy-et-V2O"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bk1-6j-TaY">
+                                <rect key="frame" x="454" y="23.5" width="90" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-e4-hdz">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYK-mV-ViN">
+                                        <rect key="frame" x="0.0" y="70" width="90" height="50"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="7KK-aD-18M"/>
+                                    <constraint firstAttribute="width" constant="90" id="DVh-CB-3Ee"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bk1-6j-TaY" secondAttribute="trailing" constant="10" id="BK1-rf-iab"/>
                             <constraint firstItem="7f1-8T-S03" firstAttribute="leading" secondItem="siL-DM-BE3" secondAttribute="leading" constant="10" id="FEw-lA-8k5"/>
                             <constraint firstItem="7f1-8T-S03" firstAttribute="top" secondItem="siL-DM-BE3" secondAttribute="top" constant="15" id="IEe-tq-iv3"/>
-                            <constraint firstItem="7f1-8T-S03" firstAttribute="centerX" secondItem="siL-DM-BE3" secondAttribute="centerX" id="fyh-bt-M3K"/>
+                            <constraint firstItem="bk1-6j-TaY" firstAttribute="centerY" secondItem="7f1-8T-S03" secondAttribute="centerY" id="U8h-0n-fcV"/>
+                            <constraint firstAttribute="bottom" secondItem="7f1-8T-S03" secondAttribute="bottom" constant="15" id="viE-t7-4um"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -79,9 +117,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lblName" destination="dTR-4J-IY0" id="U6e-OB-Jls"/>
+                <outlet property="btnDlt" destination="RYK-mV-ViN" id="xSQ-q5-8lo"/>
+                <outlet property="btnEdit" destination="JSi-e4-hdz" id="OiL-XB-Ks6"/>
                 <outlet property="lblOrder" destination="BZG-l8-McF" id="HJN-zU-lar"/>
-                <outlet property="lblTotal" destination="FI3-zg-5Ks" id="xZD-bP-BTV"/>
             </connections>
             <point key="canvasLocation" x="336.23188405797106" y="117.52232142857142"/>
         </tableViewCell>

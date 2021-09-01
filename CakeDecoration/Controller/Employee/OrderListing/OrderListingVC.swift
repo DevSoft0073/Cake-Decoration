@@ -55,18 +55,21 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     
     
     func performGetListing(completion:((_ flag: Bool) -> Void)?) {
+        
+        items.removeAll()
+        
         var monthName = String()
         var parameter: [String: Any] = [:]
         if selectedValue == "All" {
             parameter = [
-                Request.Parameter.employeeId: "2",
+                Request.Parameter.employeeId: currentUser?.id ?? String(),
                 Request.Parameter.status : "1",
                 Request.Parameter.month: "",
                 Request.Parameter.week : "",
             ]
         } else if selectedValue == "Week" {
             parameter = [
-                Request.Parameter.employeeId: "2",
+                Request.Parameter.employeeId: currentUser?.id ?? String(),
                 Request.Parameter.status : "2",
                 Request.Parameter.month: "",
                 Request.Parameter.week : "52",
@@ -82,14 +85,14 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
             monthName = nameOfMonth
             
             parameter = [
-                Request.Parameter.employeeId: "2",
+                Request.Parameter.employeeId: currentUser?.id ?? String(),
                 Request.Parameter.status : "3",
                 Request.Parameter.month: monthName,
                 Request.Parameter.week : "",
             ]
         } else {
             parameter = [
-                Request.Parameter.employeeId: "2",
+                Request.Parameter.employeeId: currentUser?.id ?? String(),
                 Request.Parameter.status : "1",
                 Request.Parameter.month: "",
                 Request.Parameter.week : "",
@@ -103,6 +106,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
             if response.code == Status.Code.success {
                 
                 self.items.append(contentsOf: response.data ?? [])
+                self.items = self.items.removingDuplicates()
                 self.tblListing.reloadData()
                 
             } else {
@@ -129,8 +133,8 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         var parameter: [String: Any] = [:]
         
         parameter = [
-            Request.Parameter.employeeId: PreferenceManager.shared.userId ?? String(),
-            Request.Parameter.orderStatu : orderStatus,
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
+            Request.Parameter.orderStatu : "1",
             Request.Parameter.order_id: orderID,
         ]
         
@@ -139,9 +143,18 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
             LoadingManager.shared.hideLoading()
             
             if response.code == Status.Code.success {
+                
                 delay {
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
-                        self.navigationController?.popViewController(animated: true)
+                        
+                        delay {
+                            
+                            LoadingManager.shared.showLoading()
+                            
+                            self.performGetListing { (flag : Bool) in
+                                
+                            }
+                        }
                     }
                 }
             } else {
@@ -235,28 +248,36 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: OrderListingCell.self)) as? OrderListingCell {
             cell.selectionStyle = .none
+            
             let data = items[indexPath.row]
             cell.lblOrder.text = "Order ID : \(data.orderID ?? String())"
             cell.lblName.text = "Customer name : \(data.name ?? String())"
-            cell.lblDate.text = "Ice Cream Flavour : \(data.iceCreamFlavour ?? String())"
-            cell.lblType.text = "Cake Flavour : \(data.cakeFlavour ?? String())"
+            cell.lblDate.text = "Ice Cream Flavor : \(data.iceCreamFlavour ?? String())"
+            cell.lblType.text = "Cake Flavor : \(data.cakeFlavour ?? String())"
             let dateVal = NumberFormatter().number(from: data.expectedOrderReady ?? "")?.doubleValue ?? 0.0
             let timeStamp = self.convertTimeStampToDate(dateVal: dateVal)
+            cell.lblCakeFlvr.text = "How many Guest? : \(data.totalGuest ?? String())"
+            cell.lblIceFlvr.text = "Roll Cake Flavor : \(data.rollCakeFlavour ?? String())"
+            cell.lblMsg.text = "Message : \(data.message ?? String())"
+            let dayTime = "\(data.orderDay ?? "")/" + "\(data.orderTime ?? "")"
+            cell.lblDayTime.text = "Due Day/Time : \(dayTime)"
             cell.lblDueDate.text = timeStamp
             cell.btnReady.addTarget(self, action: #selector(readyButtonAction(sender:)), for: .touchUpInside)
             cell.btnReady.tag = indexPath.row
+            cell.btnSeeMore.tag = indexPath.row
+            cell.btnSeeMore.addTarget(self, action: #selector(gotoListing(sender:)), for: .touchUpInside)
             return cell
         }
         return UITableViewCell()
     }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 360
+        return 550
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let orderData = items[indexPath.row]
-        let vc = ShowSubmitDetailsVC.instantiate(fromAppStoryboard: .Customer)
+        let vc = DetailsVC.instantiate(fromAppStoryboard: .Customer)
         vc.orderDetail = orderData
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -267,6 +288,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
     
     @objc func readyButtonAction(sender : UIButton) {
         let data = items[sender.tag]
+        
         DisplayAlertManager.shared.displayAlertWithCancelOk(target: self, animated: true, message: "Are you sure this order is ready?") {
             
         } handlerOk: {
@@ -281,6 +303,13 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         }
     }
     
+    @objc func gotoListing(sender : UIButton) {
+        let orderData = items[sender.tag]
+        let vc = DetailsVC.instantiate(fromAppStoryboard: .Customer)
+        vc.orderDetail = orderData
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //------------------------------------------------------
     
     //MARK: UIViewController
@@ -289,6 +318,7 @@ class OrderListingVC : BaseVC, UITableViewDelegate, UITableViewDataSource, UIPic
         super.viewDidLoad()
         configureUI()
         tblListing.separatorStyle = .none
+        tblListing.separatorColor = .clear
         LoadingManager.shared.showLoading()
         
         delay {

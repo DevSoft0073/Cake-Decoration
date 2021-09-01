@@ -9,7 +9,7 @@ import Foundation
 
 class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
-   
+    
     //------------------------------------------------------
     
     //MARK: IBOutlet(s)
@@ -17,15 +17,13 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tblList: UITableView!
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
     @IBOutlet weak var txtSelectDate: UITextField!
-    @IBOutlet weak var txtMissedValue: UITextField!
-    @IBOutlet weak var txtRetailValue: UITextField!
     
     //------------------------------------------------------
     
     //MARK: Variable Declarations
     
     var updatedData = [String]()
-    var items : [GetAllListing] = []
+    var items : [ShowItems] = []
     var itemCounts = 0
     
     //------------------------------------------------------
@@ -47,7 +45,7 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     //MARK: Custome
     
     func configureUI(){
-                
+        
         let identifier = String(describing: DailyInventoryCell.self)
         let nibCell = UINib(nibName: identifier, bundle: Bundle.main)
         tblList.register(nibCell, forCellReuseIdentifier: identifier)
@@ -70,58 +68,55 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func performAddDailyInventory(completion:((_ flag: Bool) -> Void)?) {
-        var isEmptyFieldExist = false
+        _ = false
         var finalArray = [[String : Any]]()
         for index in 0..<self.itemCounts{
             let index = IndexPath(row: index, section: 0)
             if let cell = self.tblList.cellForRow(at: index) as? DailyInventoryCell{
-//                cell.
+                //                cell.
                 let newArray: [String : Any] = [
                     Request.Parameter.item_name : cell.lblItemName.text ?? "",
                     Request.Parameter.display_case : cell.displayFld.text ?? "",
                     Request.Parameter.walk_in : cell.walkinFld.text ?? "",
                     Request.Parameter.other_storage : cell.otherStorageFld.text ?? "",
-                    Request.Parameter.total_H : cell.totalFld.text ?? "",
-                    Request.Parameter.price : cell.priceFld.text ?? "",
-                    Request.Parameter.purchased : cell.producedFld.text ?? "",
-                    Request.Parameter.sold : cell.soldFld.text ?? "",
-                    Request.Parameter.actual_total : cell.actualTotalFld.text ?? "",
-                    Request.Parameter.variance : cell.varianceFld.text ?? "",
-                    Request.Parameter.onhand : cell.presetTxt.text ?? "",
+                    Request.Parameter.total : "",
+                    Request.Parameter.last_inventory_count : cell.priceFld.text ?? "",
+                    Request.Parameter.last_inventory_date : cell.producedFld.text ?? "",
+                    Request.Parameter.variance : "",
                 ]
                 finalArray.append(newArray)
             }
         }
-                
+        
         let parameter: [String: Any] = [
             Request.Parameter.employeeId: currentUser?.id ?? String(),
-            Request.Parameter.avgVal : txtRetailValue.text ?? String(),
+            Request.Parameter.avgVal : "",
             Request.Parameter.inventoryDate : txtSelectDate.text ?? String(),
             Request.Parameter.item_detail : finalArray,
         ]
         
         RequestManager.shared.requestPOST(requestMethod: Request.Method.addDailyInventory, parameter: parameter, showLoader: false, decodingType: ResponseModal<UserModal>.self, successBlock: { (response: ResponseModal<UserModal>) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             if response.code == Status.Code.success {
                 delay {
-                            
+                    
                     DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: response.message ?? String()) {
                         self.pop()
                     }
                 }
             } else {
-
+                
                 delay {
                     DisplayAlertManager.shared.displayAlert(animated: true, message: response.message ?? String(), handlerOK: nil)
                 }
             }
-
+            
         }, failureBlock: { (error: ErrorModal) in
-
+            
             LoadingManager.shared.hideLoading()
-
+            
             delay {
                 DisplayAlertManager.shared.displayAlert(animated: true, message: error.errorDescription, handlerOK: nil)
             }
@@ -130,7 +125,11 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     
     func performGetListing(completion:((_ flag: Bool) -> Void)?) {
         
-        RequestManager.shared.requestPOSTT(requestMethod: Request.Method.getAllItems, showLoader: false, decodingType: ResponseModal<[GetAllListing]>.self, successBlock: { (response: ResponseModal<[GetAllListing]>) in
+        let parameter: [String: Any] = [
+            Request.Parameter.employeeId: currentUser?.id ?? String(),
+        ]
+        
+        RequestManager.shared.requestPOST(requestMethod: Request.Method.getAllItems, parameter: parameter, showLoader: false, decodingType: ResponseModal<[ShowItems]>.self, successBlock: { (response: ResponseModal<[ShowItems]>) in
             
             LoadingManager.shared.hideLoading()
             
@@ -156,7 +155,7 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
             }
         })
     }
-
+    
     
     //------------------------------------------------------
     
@@ -173,34 +172,16 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
                     cell.totalFld.text = "\(displayCaseVal + walkInVal + otherStorageVal)"
                 }
                 
-                let total = Int(cell.totalFld.text ?? "") ?? 0
-                let purchased = Int(cell.producedFld.text ?? "") ?? 0
-                let sold = Int(cell.soldFld.text ?? "") ?? 0
-                if (total + purchased - sold) != 0 && (total + purchased - sold) > 0 && cell.producedFld.text != "" && cell.soldFld.text != ""{
-                    cell.expectTotalFld.text = "\(total + purchased - sold)"
-
-                }
-                
-                let expectedTotal = Int(cell.expectTotalFld.text ?? "") ?? 0
-                let actualTotal = Int(cell.actualTotalFld.text ?? "") ?? 0
-                let varianceVal = actualTotal - expectedTotal
-                if varianceVal > 0{
-                    cell.varianceFld.text = "\(varianceVal)"
-                }
-                
+                let expectedTotal = Int(cell.totalFld.text ?? "") ?? 0
+                let actualTotal = Int(cell.priceFld.text ?? "") ?? 0
+                let varianceVal = expectedTotal - actualTotal
+                cell.varianceFld.text = "\(varianceVal)"
                 //total variance
                 totalVariance += Int(cell.varianceFld.text ?? "") ?? 0
                 
             }
         }
-        if totalVariance > 0{
-            var txtRetailVal = Int(self.txtRetailValue.text ?? "") ?? 0
-            if txtRetailVal == 0{
-                txtRetailVal = 1
-            }
-            self.txtMissedValue.text = "\(txtRetailVal * totalVariance)"
-
-        }
+        
     }
     
     
@@ -214,49 +195,38 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
         self.itemCounts += 1
         DispatchQueue.main.async {
             UIView.transition(with: self.tblList, duration: 0.3, options: .transitionCrossDissolve, animations: {self.tblList.reloadData()}, completion: nil)
-
         }
     }
     
     @IBAction func doneBtn(_ sender: UIButton) {
+        LoadingManager.shared.showLoading()
         
-        if txtMissedValue.text?.isEmpty == true {
-            
-            DisplayAlertManager.shared.displayAlert(message: "Please add missed value.")
-            
-        } else if txtSelectDate.text?.isEmpty == true {
-            
-            DisplayAlertManager.shared.displayAlert(message: "Please select date.")
-            
-        } else {
-            
-            LoadingManager.shared.showLoading()
-            
-            self.performAddDailyInventory { (flag : Bool) in
-            }
+        self.performAddDailyInventory { (flag : Bool) in
         }
-        
     }
+    
+    
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.itemCounts
+        return items.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DailyInventoryCell.self)) as? DailyInventoryCell {
             let data = items[indexPath.row]
-            cell.lblItemName.text = data.name
+            cell.lblItemName.text = data.itemName
             cell.displayFld.delegate = self
             cell.walkinFld.delegate = self
             cell.otherStorageFld.delegate = self
             cell.producedFld.delegate = self
-            cell.soldFld.delegate = self
-            cell.actualTotalFld.delegate = self
             cell.varianceFld.delegate = self
+            cell.priceFld.delegate = self
+            cell.priceFld.text = data.lastInventoryCount
             cell.selectionStyle = .none
+            cell.producedFld.text = data.lastInventoryDate
             return cell
         }
         return UITableViewCell()
@@ -264,11 +234,11 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 100
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 100
     }
     
     //------------------------------------------------------
@@ -278,9 +248,9 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        let date = Date().string(format: "yyyy-MM-dd")
+        txtSelectDate.text = date
         txtSelectDate.addInputViewDatePicker(target: self, selector: #selector(doneButtonPressed))
-        self.txtRetailValue.delegate = self
-        self.txtMissedValue.isUserInteractionEnabled = false
         self.performGetListing { (flag : Bool) in
             
         }
@@ -291,15 +261,13 @@ class DailyInventoryVC : BaseVC, UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    //------------------------------------------------------
 }
 
 
 extension DailyInventoryVC : UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        
         self.performCalculation()
     }
     
@@ -310,4 +278,12 @@ extension DailyInventoryVC : UITextFieldDelegate{
         
     }
     
+}
+
+extension Date {
+    func string(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
 }

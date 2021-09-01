@@ -31,7 +31,7 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var detailss:[HomeMenu] = [HomeMenu(type: .user, name: "Cake Order", image: "inventory"),HomeMenu(type: .employee, name: "Order Status", image: "list")]
     
-    var details:[InventoryDetailsItems] = [InventoryDetailsItems(type: .add, name: "Inventory", image: "inventory"),InventoryDetailsItems(type: .cakeList, name: "Cake List", image: "list"),InventoryDetailsItems(type: .inventory, name: "Inventory Listing", image: "list")]
+    var details:[InventoryDetailsItems] = [InventoryDetailsItems(type: .add, name: "Item Listing", image: "inventory"),InventoryDetailsItems(type: .cakeList, name: "Inventory", image: "list"),InventoryDetailsItems(type: .inventory, name: "Cake list(By Orders)", image: "list"),InventoryDetailsItems(type: .delta, name: "Cake List(By Inventory)", image: "list")]
     
     //------------------------------------------------------
     
@@ -118,13 +118,16 @@ class ListingVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         if PreferenceManager.shared.curretMode == "1"{
             let type = details[indexPath.row].type
             if type == .add {
-                let vc = InventoryListingVC.instantiate(fromAppStoryboard: .Main)
+                let vc = AddedInventoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if type == .cakeList{
-                let vc = OrderListingVC.instantiate(fromAppStoryboard: .Main)
+                let vc = DailyInventoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if type == .inventory {
-                let vc = AddedInventoryVC.instantiate(fromAppStoryboard: .Main)
+                let vc = OrderListingVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else if type == .delta {
+                let vc = OnHandListingVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }else{

@@ -12,7 +12,7 @@
 import Foundation
 
 // MARK: - OrderListingModal
-struct OrderListingModal: Codable {
+struct OrderListingModal: Codable , Hashable{
     var id, userID, orderID, employeeID: String?
     var orderedDate, orderDateStr, expectedOrderReady, orderTime: String?
     var orderDay, name, phoneDay, phoneEvening: String?

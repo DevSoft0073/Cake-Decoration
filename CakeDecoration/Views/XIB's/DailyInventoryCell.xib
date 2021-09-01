@@ -11,25 +11,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyInventoryCell" rowHeight="110" id="KGk-i7-Jjw" customClass="DailyInventoryCell" customModule="CakeDecoration" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="1071" height="110"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DailyInventoryCell" rowHeight="222" id="KGk-i7-Jjw" customClass="DailyInventoryCell" customModule="CakeDecoration" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1071" height="132"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="1071" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="1071" height="132"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUz-v5-6XH">
-                        <rect key="frame" x="0.0" y="10" width="1071" height="90"/>
+                        <rect key="frame" x="0.0" y="10" width="1071" height="112"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qqA-6D-fu0">
-                                <rect key="frame" x="0.0" y="10" width="1071" height="70"/>
+                                <rect key="frame" x="0.0" y="10" width="1071" height="92"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8F-th-da9">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="92"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-eB-HME">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -54,11 +54,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-4m-8xV">
-                                        <rect key="frame" x="90" y="0.0" width="80" height="70"/>
+                                        <rect key="frame" x="135" y="0.0" width="125.5" height="92"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFr-mb-P96">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121.5" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
@@ -82,11 +82,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-G9-rIF">
-                                        <rect key="frame" x="180" y="0.0" width="80.5" height="70"/>
+                                        <rect key="frame" x="270.5" y="0.0" width="125" height="92"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ke-p4-cca">
-                                                <rect key="frame" x="2" y="2" width="76.5" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
@@ -110,11 +110,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3l-ZM-1VE">
-                                        <rect key="frame" x="270.5" y="0.0" width="80" height="70"/>
+                                        <rect key="frame" x="405.5" y="0.0" width="125" height="92"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="awT-ou-KWl">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
@@ -137,155 +137,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-Wv-1ls">
-                                        <rect key="frame" x="360.5" y="0.0" width="80" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J9Z-D2-tpj">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="J9Z-D2-tpj" secondAttribute="bottom" constant="2" id="s6u-OF-WQ9"/>
-                                            <constraint firstItem="J9Z-D2-tpj" firstAttribute="leading" secondItem="oKA-Wv-1ls" secondAttribute="leading" constant="2" id="sVY-ju-bZ9"/>
-                                            <constraint firstItem="J9Z-D2-tpj" firstAttribute="top" secondItem="oKA-Wv-1ls" secondAttribute="top" constant="2" id="tnr-u4-d2D"/>
-                                            <constraint firstAttribute="trailing" secondItem="J9Z-D2-tpj" secondAttribute="trailing" constant="2" id="yGi-7m-JVT"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-78-rm6">
-                                        <rect key="frame" x="450.5" y="0.0" width="80" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yI9-KE-Dtj">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="yI9-KE-Dtj" secondAttribute="trailing" constant="2" id="2Ry-3l-cE7"/>
-                                            <constraint firstItem="yI9-KE-Dtj" firstAttribute="top" secondItem="ytz-78-rm6" secondAttribute="top" constant="2" id="Owc-j6-Nmf"/>
-                                            <constraint firstItem="yI9-KE-Dtj" firstAttribute="leading" secondItem="ytz-78-rm6" secondAttribute="leading" constant="2" id="hs2-5x-aAe"/>
-                                            <constraint firstAttribute="bottom" secondItem="yI9-KE-Dtj" secondAttribute="bottom" constant="2" id="nb3-nv-PKs"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujW-Z9-2UO">
-                                        <rect key="frame" x="540.5" y="0.0" width="80" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQK-6e-Kvm">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="cQK-6e-Kvm" firstAttribute="leading" secondItem="ujW-Z9-2UO" secondAttribute="leading" constant="2" id="1MO-JP-EFo"/>
-                                            <constraint firstAttribute="trailing" secondItem="cQK-6e-Kvm" secondAttribute="trailing" constant="2" id="5Oa-6X-EdZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="cQK-6e-Kvm" secondAttribute="bottom" constant="2" id="E1c-rx-vk5"/>
-                                            <constraint firstItem="cQK-6e-Kvm" firstAttribute="top" secondItem="ujW-Z9-2UO" secondAttribute="top" constant="2" id="XHQ-fp-DUz"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6c-77-FQm">
-                                        <rect key="frame" x="630.5" y="0.0" width="80" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-Eh-GYi">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="qzY-Eh-GYi" secondAttribute="trailing" constant="2" id="4KC-JZ-rmO"/>
-                                            <constraint firstAttribute="bottom" secondItem="qzY-Eh-GYi" secondAttribute="bottom" constant="2" id="9iD-vS-orS"/>
-                                            <constraint firstItem="qzY-Eh-GYi" firstAttribute="leading" secondItem="p6c-77-FQm" secondAttribute="leading" constant="2" id="RzZ-i4-jqz"/>
-                                            <constraint firstItem="qzY-Eh-GYi" firstAttribute="top" secondItem="p6c-77-FQm" secondAttribute="top" constant="2" id="bLZ-pE-sam"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-5f-Qk6">
-                                        <rect key="frame" x="720.5" y="0.0" width="80.5" height="70"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NV6-A5-D30">
-                                                <rect key="frame" x="2" y="2" width="76.5" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="NV6-A5-D30" secondAttribute="bottom" constant="2" id="NsY-Wh-jev"/>
-                                            <constraint firstItem="NV6-A5-D30" firstAttribute="top" secondItem="rOe-5f-Qk6" secondAttribute="top" constant="2" id="c0K-mP-Uzd"/>
-                                            <constraint firstItem="NV6-A5-D30" firstAttribute="leading" secondItem="rOe-5f-Qk6" secondAttribute="leading" constant="2" id="mDS-oF-6Sf"/>
-                                            <constraint firstAttribute="trailing" secondItem="NV6-A5-D30" secondAttribute="trailing" constant="2" id="yVD-uv-avA"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wD-Iq-uvS">
-                                        <rect key="frame" x="811" y="0.0" width="80" height="70"/>
+                                        <rect key="frame" x="540.5" y="0.0" width="125" height="92"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1t-VD-PCl">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
@@ -311,21 +168,21 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jg-VZ-kai">
-                                        <rect key="frame" x="901" y="0.0" width="80" height="70"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-Wv-1ls">
+                                        <rect key="frame" x="675.5" y="0.0" width="125.5" height="92"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-iQ-EZf">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J9Z-D2-tpj">
+                                                <rect key="frame" x="2" y="2" width="121.5" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="dfJ-iQ-EZf" secondAttribute="bottom" constant="2" id="3US-sN-Ecs"/>
-                                            <constraint firstItem="dfJ-iQ-EZf" firstAttribute="leading" secondItem="3Jg-VZ-kai" secondAttribute="leading" constant="2" id="5RP-gI-N3f"/>
-                                            <constraint firstItem="dfJ-iQ-EZf" firstAttribute="top" secondItem="3Jg-VZ-kai" secondAttribute="top" constant="2" id="7oY-Em-R1c"/>
-                                            <constraint firstAttribute="trailing" secondItem="dfJ-iQ-EZf" secondAttribute="trailing" constant="2" id="Hcy-Wl-I4B"/>
+                                            <constraint firstAttribute="bottom" secondItem="J9Z-D2-tpj" secondAttribute="bottom" constant="2" id="s6u-OF-WQ9"/>
+                                            <constraint firstItem="J9Z-D2-tpj" firstAttribute="leading" secondItem="oKA-Wv-1ls" secondAttribute="leading" constant="2" id="sVY-ju-bZ9"/>
+                                            <constraint firstItem="J9Z-D2-tpj" firstAttribute="top" secondItem="oKA-Wv-1ls" secondAttribute="top" constant="2" id="tnr-u4-d2D"/>
+                                            <constraint firstAttribute="trailing" secondItem="J9Z-D2-tpj" secondAttribute="trailing" constant="2" id="yGi-7m-JVT"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -337,14 +194,45 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytz-78-rm6">
+                                        <rect key="frame" x="811" y="0.0" width="125" height="92"/>
+                                        <subviews>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yI9-KE-Dtj">
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="yI9-KE-Dtj" secondAttribute="trailing" constant="2" id="2Ry-3l-cE7"/>
+                                            <constraint firstItem="yI9-KE-Dtj" firstAttribute="top" secondItem="ytz-78-rm6" secondAttribute="top" constant="2" id="Owc-j6-Nmf"/>
+                                            <constraint firstItem="yI9-KE-Dtj" firstAttribute="leading" secondItem="ytz-78-rm6" secondAttribute="leading" constant="2" id="hs2-5x-aAe"/>
+                                            <constraint firstAttribute="bottom" secondItem="yI9-KE-Dtj" secondAttribute="bottom" constant="2" id="nb3-nv-PKs"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpJ-br-db2">
-                                        <rect key="frame" x="991" y="0.0" width="80" height="70"/>
+                                        <rect key="frame" x="946" y="0.0" width="125" height="92"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KgX-C8-gb8">
-                                                <rect key="frame" x="2" y="2" width="76" height="66"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                <rect key="frame" x="2" y="2" width="121" height="88"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
@@ -399,20 +287,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="actualTotalFld" destination="qzY-Eh-GYi" id="1gV-zl-ezc"/>
                 <outlet property="displayFld" destination="TFr-mb-P96" id="yVi-Vi-4Jq"/>
-                <outlet property="expectTotalFld" destination="dfJ-iQ-EZf" id="2gk-Wg-AIf"/>
                 <outlet property="lblItemName" destination="ZKz-eB-HME" id="BJE-cK-JJb"/>
                 <outlet property="otherStorageFld" destination="awT-ou-KWl" id="mPr-q9-rZp"/>
-                <outlet property="presetTxt" destination="NV6-A5-D30" id="7fx-3Z-0sJ"/>
                 <outlet property="priceFld" destination="J9Z-D2-tpj" id="7Gk-ag-Yaw"/>
                 <outlet property="producedFld" destination="yI9-KE-Dtj" id="du7-d9-mn4"/>
-                <outlet property="soldFld" destination="cQK-6e-Kvm" id="qJJ-l9-b8b"/>
                 <outlet property="totalFld" destination="m1t-VD-PCl" id="lDG-Hm-eFZ"/>
                 <outlet property="varianceFld" destination="KgX-C8-gb8" id="xim-4F-nV2"/>
                 <outlet property="walkinFld" destination="1ke-p4-cca" id="7Cn-0D-Vrr"/>
             </connections>
-            <point key="canvasLocation" x="515.21739130434787" y="87.053571428571431"/>
+            <point key="canvasLocation" x="515.21739130434787" y="94.419642857142847"/>
         </tableViewCell>
     </objects>
     <resources>

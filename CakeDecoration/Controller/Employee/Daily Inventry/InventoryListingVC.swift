@@ -54,8 +54,13 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
             if response.code == Status.Code.success {
                 
                 self.items.append(contentsOf: response.data ?? [])
-                self.itemCounts = self.items.count
                 self.items = self.items.removingDuplicates()
+                self.itemCounts = self.items.count
+                
+                delay {
+                    self.tblList.reloadData()
+                }
+                
                 self.tblList.reloadData()
                 
             } else {
@@ -90,6 +95,8 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         
     }
     
+    
+    
     //------------------------------------------------------
     
     //MARK: TableView Delegate Datasource Method(s)
@@ -108,17 +115,17 @@ class InventoryListingVC : BaseVC, UITableViewDelegate , UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InventoryCell.self)) as? InventoryCell {
             cell.selectionStyle = .none
-            let data = items[indexPath.row]
-            cell.lblOrder.text = "Inventory Added Date: \(data.inventoryDate ?? String())"
-            cell.lblName.text = "Inventory ID : \(data.inventoryID ?? String())"
-            cell.lblTotal.text = "Employee ID : \(data.employeeID ?? String())"
+//            let data = items[indexPath.row]
+//            cell.lblOrder.text = "Inventory Added Date: \(data.inventoryDate ?? String())"
+//            cell.lblName.text = "Inventory ID : \(data.inventoryID ?? String())"
+//            cell.lblTotal.text = "Employee ID : \(data.employeeID ?? String())"
             return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 250
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

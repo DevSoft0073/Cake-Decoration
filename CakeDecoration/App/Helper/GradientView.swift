@@ -16,7 +16,7 @@ class GradientView: UIView {
         super.init(coder: aDecoder)
         let gradientLayer = layer as! CAGradientLayer
          
-        gradientLayer.colors = [#colorLiteral(red: 0.4492068887, green: 0.1920138597, blue: 0.7885629535, alpha: 1), #colorLiteral(red: 0.001651298371, green: 0.1602686644, blue: 0.7061148286, alpha: 1)]
+        gradientLayer.colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.001651298371, green: 0.1602686644, blue: 0.7061148286, alpha: 1)]
     }
 }
 
